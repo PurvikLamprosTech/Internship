@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* background-clip example */
+        #example1{
+            border: dotted 10px ;
+            padding: 20px;
+            background: yellowgreen; /*background-clip is border-box by default*/
+        }
+        #example2{
+            border: dotted 10px ;
+            padding: 20px;
+            background: yellowgreen; 
+            background-clip: padding-box;
+        }
+        #example3{
+            border: dotted 10px ;
+            padding: 20px;
+            background: yellowgreen; 
+            background-clip: content-box;
+        }
+
+        /* background-origin example */
+        #example4{
+            border: solid 10px black;
+            padding: 50px;
+            background: url("https://www.w3schools.com/jsref/img_flwr.gif") no-repeat center;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+        #example5{
+            border: solid 10px black;
+            padding: 50px;
+            background: url("https://www.w3schools.com/jsref/img_flwr.gif") no-repeat center;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            background-position: left top;
+        }
+        #example6{
+            border: solid 10px black;
+            padding: 50px;
+            background: url("https://www.w3schools.com/jsref/img_flwr.gif") no-repeat center;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            background-position: left top;
+        }
+    </style>
+</head>
+<body>
+    <h1>The background-clip Property</h1>
+
+<p>No background-clip (border-box is default):</p>
+<div id="example1">
+  <h2>Lorem Ipsum Dolor</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>background-clip: padding-box:</p>
+<div id="example2">
+  <h2>Lorem Ipsum Dolor</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>background-clip: content-box:</p>
+<div id="example3">
+  <h2>Lorem Ipsum Dolor</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>No background-origin(padding-box is default):</p>
+<div id="example4">
+  <h2>Lorem Ipsum Dolor</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>background-origin: border-box:</p>
+<div id="example5">
+  <h2>Lorem Ipsum Dolor</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>background-origin: content-box:</p>
+<div id="example6">
+  <h2>Lorem Ipsum Dolor</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+</body>
+</html>

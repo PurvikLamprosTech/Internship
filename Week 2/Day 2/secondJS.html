@@ -1,0 +1,295 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. logical operators
+2. Nullish coalescing operator '??'
+3. Loops 
+4. switch statement
+5. functions
+6. function expressions
+7. arrow functions
+
+**NOTES: 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+    // 1. logical operators
+
+        // OR || operator:
+        // Evaluates operands from left to right.
+        // For each operand, converts it to boolean. If the result is true, stops and returns the original value of that operand.
+        // If all operands have been evaluated (i.e. all were false), returns the last operand.
+        // let firstName = "";
+        // let lastName = "";
+        // let nickName = "Hello";
+        // alert( firstName || lastName || nickName || "Anonymous"); // Hello
+
+        // AND && operator:
+        // Evaluates operands from left to right.
+        // For each operand, converts it to a boolean. If the result is false, stops and returns the original value of that operand.
+        // If all operands have been evaluated (i.e. all were truthy), returns the last operand.
+        // let hour = 12;
+        // let minutes = 30;
+        // if(hour == 12 && minutes == 30){
+        //     alert("Time is 12:30");
+        // }
+
+        // if the first operand is truthy,
+        // AND returns the second operand:
+        // alert(1 && 0);  // 0
+        // alert( 1 && 5 ); // 5
+
+        // // if the first operand is falsy,
+        // // AND returns it. The second operand is ignored
+        // alert( null && 5 ); // null
+        // alert( 0 && "no matter what" ); // 0
+
+        // NOT operator
+        // Converts the operand to boolean type: true/false.
+        // Returns the inverse value.
+        // alert( !true ); // false
+        // alert( !0 ); // true
+
+        // alert( !!"non-empty string" ); // true
+        // alert( !!null ); // false
+
+
+
+    // 2. Nullish coalescing operator '??' - shows the first defined value else null:
+
+        // let firstName = null;
+        // let lastName = null;
+        // let nickName = null;
+        // alert(firstName ?? lastName ?? nickName); // null
+
+        // let firstName = null;
+        // let lastName = null;
+        // let nickName = "Hello";
+        // alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // Hello
+
+        // let height = 0;
+        // alert(height || 100); //100, || returns the first truthy value.
+        // alert(height ?? 100); // 0, ?? returns the first defined value.
+
+
+
+    // 3. Loops
+        // while
+        // let i = 3;
+        // while(i){   // when i becomes 0, the condition becomes falsy, and the loop stops
+        //     alert(i); 
+        //     i--;
+        // }
+
+        //do while
+        // let i = 0;
+        // do{
+        //     alert(i);
+        //     i++;
+        // }while(i < 3);
+
+        //for loop
+        // for(let i=0;i<3;i++){
+        //     alert(i);
+        // }
+
+
+
+    // 4. switch statement
+        // let n1 = prompt("Enter value 1 ", "");
+        // let n2 = prompt("Enter value 2", "");
+        // let sum = n1 + n2;
+        // switch(sum){
+        //     case 3:
+        //         alert("Too small");
+        //         break;
+
+        //     case 4:
+        //         alert("Exactly");
+        //         break;
+
+        //     case 5:
+        //         alert("Too big");
+        //         break;
+
+        //     default:
+        //         alert("Not Found !!");
+        // }
+
+        //grouping of cases
+        // let browser = "Chrome";
+        // switch (browser) {
+        //     case 'Edge':
+        //         alert( "You've got the Edge!" );
+        //         break;
+
+        //     case 'Chrome':
+        //     case 'Firefox':
+        //     case 'Safari':
+        //     case 'Opera':
+        //         alert( 'Okay we support these browsers too' );
+        //         break;
+
+        //     default:
+        //         alert( 'We hope that this page looks ok!' );
+        // }
+
+
+        // For 0, 1, the first alert runs.
+        // For 2 the second alert runs.
+        // But for 3, the result of the prompt is a string "3", which is not strictly equal === to the number 3. So we’ve got a dead code in case 3! The default variant will execute.
+        // let arg = prompt("Enter value:","");
+        // switch (arg){
+        //     case "1":
+        //     case "2":
+        //         alert("One or Two");
+        //         break;
+        //     case 3:
+        //         alert("Three wrong");
+        //         break;
+        //     default:
+        //         alert("This default statement will execute.")
+        // }
+        
+
+
+    // 5. functions
+        // let lastName = "World !";
+        // function myFunc(){
+        //     let name = "Hello " + lastName;
+        //     document.write(name);
+        //     console.log(name);
+        //     alert(name);
+        // }
+        // myFunc();
+
+        // let userName = "John";
+        // function changeName(){
+        //     userName = "Bob";
+        //     let message = "Hello, " + userName;
+        //     alert(message);
+        // }
+        // alert(userName);    //John, before the function call
+        // changeName();   //function call
+        // alert(userName);    //bob, the value was modified by the function
+
+        // let userName = "John";
+        // function myFunc(){
+        //     let userName = "Bob";
+        //     let message = "Hello, " + userName;
+        //     alert(message);
+        // }
+        // myFunc();    // the function will create and use its own userName
+        // alert(userName);    // John, name will not change as in the function the same variable is declared locally. so, the value will not get changed.
+
+        //parameters
+        // function myFunc2(firstName, lastName){
+        //     alert("Hello, " + firstName + " " + lastName);
+        // }
+        // myFunc2("John","Wick");
+
+        // function myFunc3(firstName, lastName){
+        //     alert("Hello, " + firstName + " " + lastName);
+        // }
+        // let firstName = "John"; 
+        // myFunc3(firstName,"Wick");
+
+        // function checkAge(age){
+        //     if(age >= 18){
+        //         return true;    //this will get considered if age is greater than or equal to 18.
+        //     }else{
+        //         return confirm("Do you have permission ?"); //this will get considered if age is less than 18
+        //     }
+        // }
+        // let age = prompt(" Your age ?", "");
+        // if(checkAge(age)){
+        //     alert("Access Granted.");   //will execute this if the function returns true 
+        // }else{
+        //     alert("Access Denied.");    //will execute this if in the confirm box gets a cancel sign
+        // }
+
+
+
+    // 6. function expressions
+        // let var1 = function(){
+        //     alert("Hello");
+        // };
+        // var1(); //Hello
+        // alert(var1); //prints the actual code because we didn't added parenthesis '()' in the alert. eg. var1();
+
+        // function sayHi(){
+        //     alert("Hello");
+        // }
+        // let var1 = sayHi;   //Please note again: there are no parentheses after sayHi. If there were, then func = sayHi() would write the result of the call sayHi() into func, not the function sayHi itself.
+        // var1();
+        // sayHi();
+        //
+        // function sayHi(){
+        //     alert("Hello");
+        // }
+        // let var1 = sayHi();
+        // alert(var1());
+
+        //callback functions
+        // function ask(question, yes, no){
+        //     if(confirm(question)){  //if confirm question will true the it will go to the 'yes' which is linked with showOk function.
+        //         yes();
+        //     } else {
+        //         no();
+        //     }
+        // }
+        // function showOk(){
+        //     alert("You agreed");
+        // }
+        // function showCancel(){
+        //     alert("You disagreed");
+        // }
+        // ask("Do you agree ?", showOk, showCancel);
+
+        // function expression vs function declaration
+        // function sum(a, b) {        //normal function
+        //     return a + b;
+        // }
+        // alert(sum(1,2));
+        // let var1 = function(a,b){   // function expression
+        //     return a + b;
+        // };
+        // alert(var1(1,3));
+
+
+
+    // 7. arrow functions
+        // let arrowVar = (a, b) => a + b ;
+        // alert(arrowVar(1,2));
+
+        // let age = prompt("Your age ? ", "");
+        // let welcome = (age<18 && age>0) ? () => alert("Hello") : (age >= 18 && age <=100) ? () => alert("Hiii") : () => alert("Greetings");
+        // welcome();
+
+        //multiline arrow function
+        //
+        // The arrow functions that we’ve seen so far were very simple. They took arguments from the left of =>, evaluated and returned the right-side expression with them.
+        // Sometimes we need a more complex function, with multiple expressions and statements. In that case, we can enclose them in curly braces. The major difference is that curly braces require a return within them to return a value (just like a regular function does).
+        // let sum = (a, b) => {    // the curly brace opens a multiline function
+        //     let result = a + b;
+        //     return result;  // if we use curly braces, then we need an explicit "return"
+        // };
+        // alert(sum(1,2));    // 3
+
+
+
+
+
+    </script>
+</body>
+</html>

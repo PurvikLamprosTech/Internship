@@ -1,0 +1,13 @@
+@mixin name1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin name2($fntSize, $lSpace){             //here we have declared variable in parameters...
+    color:rgb(44, 78, 67);
+    font-size: $fntSize;  
+    letter-spacing: $lSpace;                 //it will consider 0.1rem by + operator
+    text-transform: uppercase;
+}

@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item1 { 
+            grid-area: hdr; 
+        }
+        .item2 { 
+            grid-area: mnu; 
+        }
+        .item3 { 
+            grid-area: main; 
+        }
+        .item4 { 
+            grid-area: ht; 
+        }
+        .item5 { 
+            grid-area: ftr; 
+        }
+
+        .grid-container{
+            display:grid;
+            grid-template-columns: repeat(6, 2fr);
+            grid-auto-rows: auto;
+            grid-template-areas:'hdr hdr hdr hdr hdr hdr'
+                                'mnu mnu main main main ht ht'
+                                'mnu ftr ftr ftr ftr ftr';
+            gap: 10px;
+            background-color: rgb(138, 236, 203);
+            padding: 10px;
+        }
+        .grid-container > div{
+            background-color: blueviolet;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Grid Layout</h1>
+    <p>Example of grid layout - This grid layout contains six columns and three rows:</p>
+
+    <div class="grid-container">
+        <div class="item1">Headerr</div>
+        <div class="item2">Menuu</div>
+        <div class="item3">Mainn</div>
+        <div class="item4">Rightt</div>
+        <div class="item5">Footerr</div>
+    </div>
+</body>
+</html>

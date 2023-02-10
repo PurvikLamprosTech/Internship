@@ -1,0 +1,284 @@
+<!--This file contains: 
+***reference: https://javascript.info/***
+1. variables
+2. constants
+3. datatype
+4. alert,prompt,confirm
+5. type conversion
+6. basic operators, math
+7. comparison
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL Fundamentals</title>
+</head>
+<body>
+    <script>
+        "use strict";
+    //1. variable.
+        // alert("Hello. I'm Javascript");
+        // let message = "Hello World"; //variable. declared bu using 'let' keyword.
+        // message = "Hello Javascript"; // value changed
+        // alert(message);
+
+        // let hello = "Hello World";
+        // let message;
+        // message = hello; //copy Hello World from hello into message
+        // //now two variable holds the same data.
+        // alert(hello);  //Hello World
+        // alert(message); //Hello World
+
+        // let $ = 1;      //valid
+        // let _ = 2;      //valid
+        // alert($ + _);   //returns 3
+
+
+
+    //2. constants.
+        // const myBirthDate = "06-01-20020"; //this value is constant(can't change)
+        // alert(myBirthDate);
+        // console.log(myBirthDate);
+        // myBirthDate = "18-05-1999"; //can not change the value because it is already declared in const variable
+
+        // const COLOR_RED = "red - #F00";
+        // const COLOR_GREEN = "green - #0F0";
+        // const COLOR_BLUE = "blue - #00F";
+        // const COLOR_ORANGE = "orange - #FF7F00";
+
+        // let color = COLOR_BLUE;
+        // alert(color);
+
+
+
+    //3. datatype.
+        // let message = "hello";        // no error
+        // message = 123456;             // no error
+
+        // let name = 'John';
+        // alert(`Hello, ${name}`); //Hello, John
+        // alert(`The result of 1 + 2 is ${1 + 2}`); //The result of 1 + 2 is 3
+
+        //boolean
+        // let isGreater = 35 > 25; //true
+        // alert(isGreater);    //true
+
+        //typeof operators
+        // alert(typeof("a"));  //prints string
+        // alert(typeof(0));//prints number
+        // alert(typeof(10n));//prints bigint
+
+
+
+    //4. alert,prompt,confirm
+        // alert("Hello");
+
+        // let age = prompt("Enter your age:","");
+        // confirm("Are you sure ?");
+        // alert(`Your age is ${age}`);
+
+        // confirm("You must be 18+ for voting");
+        // let name = prompt("Enter your name");
+        // let age = prompt("Enter your age");
+        // if(age>=18){
+        //     alert("You are eligible for voting.");
+        // }else{
+        //     alert("Your age must be at least 18 to vote.");
+        // }
+
+
+
+    //5. type conversion
+        //  let num = 12;
+        // console.log(num, typeof(num)); //prints > 12 number (normal)
+        // let num1 = String(12);
+        // console.log(num1, (typeof num1)); //prints > 12 string (converted)
+
+        //  let date = new Date();
+        // console.log(date, typeof(date)); //prints > *date* object (normal)
+        // let date1 = String(new Date());
+        // console.log(date1, typeof(date1)); //prints > *date* string (converted)
+
+        // let arr = [1,2,3,4,5];
+        // console.log(arr, typeof(arr)); //prints > *array values* object (normal)
+        // console.log(arr.length);
+        // let arr1 = String([1,2,3,4,5]);
+        // console.log(arr1.length, typeof(arr1)); //prints > 9 string (converted)
+
+        //  let boolVar = true;
+        // console.log(boolVar, typeof(boolVar)); //prints > true boolean (normal)
+        // let boolVar1 = String(true);
+        // console.log(boolVar1, typeof(boolVar1)); //prints > true string (converted)
+
+        // let str = "2525";
+        // alert(str);          //prints > Hello
+        // alert(typeof(str));  //prints > string (normal)
+        // let str = Number("2525");
+        // alert(str); // prints > 2525
+        // alert(typeof(str)); // prints > number (converted)
+
+        // let str2 = +("2525"); //another way of converting string into number by adding "+" as prepending
+        // alert(typeof(str2));
+        
+        //  let boolVar = true;
+        //  let all = boolVar;
+        //  console.log(all.toString());  // another way of converting any type into string 
+        
+
+        
+    // 6. basic operators, math
+        // let x = 2;
+        // x = -x;
+        // alert( x ); // -2, unary negation was applied
+
+        // let a=1,b=2;
+        // alert(`${a} + ${b} = ${a+b}`); //prints > 1 + 2 = 3
+        // alert(`${b} - ${a} = ${b-a}`); //prints > 2 - 1 = 1
+        // alert(3+2); //prints > 5
+        // alert(3-2); //prints > 1
+        // alert(3*2); //prints > 6
+        // alert(3/2); //prints > 1.5
+        // alert(3%2); //prints > 1
+        // alert(3**2);//prints > 9, 3^2(3*3)
+
+        // let x = 12, y = 10;
+        // document.write(x); //12
+        // x++;
+        // document.write("<br>");  
+        // document.write(x);  //13
+        // x--;
+        // document.write("<br>");
+        // document.write(x);  //12
+        // document.write(x + y); //22
+        // document.write(x + 3); //15
+
+        // alert(2+2+"1"); //41 not 221
+        // alert("1"+2+2); //122 not 41
+        // alert(6-"2"); // 4, converts '2' to a number
+        // alert("6"/"2"); // 3, converts both operands to numbers
+        // alert("1"+"2"); // 12 not 3
+
+        //increment/decrement
+        // let counter = 1;
+        // alert(`counter first value = ${counter}`);  //1
+        // alert(2 * ++counter);  // 2*2=4 increment counter by 1
+        // alert(2 * counter++);  // 2*2=4, because counter was incremented above and after the expression the counter will  increment by 1
+        // alert(`counter updated value = ${counter}`);  //3 as latest increment of counter
+
+        // let counter1 = 1;
+        // alert(`counter1 first value = ${counter1}`); //1
+        // alert(2 + counter1++); //2+1=3
+        // alert(2 + ++counter1); //2+3=5
+        // alert(`counter1 updated value = ${counter1}`); //5
+
+        // bitwise:
+        // let var2;
+        // var2 = 5 & 1;   // bitwise AND: & 
+        // console.log(var2);
+        // let var3;
+        // var3 = 5 | 1;   // bitwise OR: |
+        // console.log(var3);
+
+        // "" + 1 + 0 = "10" // (1)
+        // "" - 1 + 0 = -1 // (2)
+        // true + false = 1
+        // 6 / "3" = 2
+        // "2" * "3" = 6
+        // 4 + 5 + "px" = "9px"
+        // "$" + 4 + 5 = "$45"
+        // "4" - 2 = 2
+        // "4px" - 2 = NaN
+        // "  -9  " + 5 = "  -9  5" // (3)
+        // "  -9  " - 5 = -14 // (4)
+        // null + 1 = 1 // (5)
+        // undefined + 1 = NaN // (6)
+        // " \t \n" - 2 = -2 // (7)
+
+
+
+    // 7. comparison
+        // let a = 10;
+        // let b = 20;
+        // console.log(a==b);  //false
+        // console.log(a>b);   //false
+        // console.log(a<b);   //true
+        // console.log(a!=b); //true
+        // console.log(a!==b); //true
+        // console.log(a===b); //false
+        // console.log(a>=b);  //false
+        // console.log(a<=b);  //true
+
+        // alert( '2' > 1 ); // true, string '2' becomes a number 2
+        // alert( '01' == 1 ); // true, string '01' becomes a number 1
+        // alert('01' == 11); // false
+
+        // alert( 'Z' > 'A' ); // true
+        // alert("Hloo" > "Hlee"); //true
+
+        // let a = 0;
+        // alert(Boolean(a));   //false
+        // let b = "0";
+        // alert(Boolean(b));   //true
+        // alert(a==b); //true
+
+        // alert(0 == false);  //true
+        // alert(''== true); // false
+        // alert( '' == false ); // true
+
+        // 5 > 4 → true
+        // "apple" > "pineapple" → false
+        // "2" > "12" → true
+        // undefined == null → true
+        // undefined === null → false
+        // null == "\n0\n" → false
+        // null === +"\n0\n" → false
+
+        // Some of the reasons:
+        // 1. Obviously, true.
+        // 2. Dictionary comparison, hence false. "a" is smaller than "p".
+        // 3. Again, dictionary comparison, first char "2" is greater than the first char "1".
+        // 4. Values null and undefined equal each other only.
+        // 5. Strict equality is strict. Different types from both sides lead to false.
+        // 6. Similar to (4), null only equals undefined.
+        // 7. Strict equality of different types.
+
+    // 8. conditional 
+        // let ans = prompt("In which year ECMAScript-2015 specification published ?", "");
+        // if(ans == 2015){
+        //     alert("You guessed correct.");
+        // }else{
+        //     alert("How can you be so wrong?")
+        // }
+
+        // let year = prompt("In which year ECMAScript-2015 specification published ?", "");
+        // if(year > 2015){
+        //     alert("Too late.");
+        // }else if(year < 2015){
+        //     alert("Too early.")
+        // }else{
+        //     alert("Exactly.");
+        // }
+
+        // let accessAllowed;
+        // let age = prompt("How old are you ?", "");
+        // if(age>18){
+        //     accessAllowed = true;
+        // }else{
+        //     accessAllowed = false;
+        // }
+        // alert(accessAllowed);
+
+        // let accessAllowed1 = (age > 18) ? true : false;
+
+        // let age = prompt("Your age ?", "");
+        // let accessAllowed2 = (age < 4) ? "Hi Baby" : (age >= 4 && age <= 17) ? "Hello !" :
+        // (age > 17 && age < 100) ? "Greetings" : "What an unusual age..";
+        // alert(accessAllowed2);
+
+    </script>
+</body>
+</html>

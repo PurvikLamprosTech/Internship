@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+        body{
+            text-align: center;
+            background-color: hsl(212, 62%, 58%);
+        }
+        @media screen and (min-width:1440px) {
+            body{
+                background-color: brown;
+            }
+        }
+        .main{
+            /* margin: auto; */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card{
+            padding: 10px;
+            margin: 0 auto;
+            margin-top: 200px;
+            text-align: center;
+            /* border: ; */
+            border-color:black;
+            border-radius: 12px;
+            background-color: rgb(255, 255, 255);
+            width: 200px;
+            height: 200px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        /* .card:hover{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);   
+        } */
+        .img1{
+            /* margin: 10px; */
+            max-width: 100%;
+            height: auto;
+            /* object-fit: contain; */
+            border-radius: inherit;
+            margin-bottom: auto;
+        }
+
+        .descr{
+            margin-top: 20px;
+            /* padding-bottom: 10px; */
+        }
+    </style>
+
+
+</head>
+<body>
+    
+<!-- <h1>Create Polaroid Images</h1>
+
+<p>The box-shadow property can be used to create polaroid images:</p> -->
+    <div class="main">
+        <div class="card">
+            <img class="img1" src="https://www.w3schools.com/css/rock600x400.jpg" alt="img1" style="width:100%">
+            <div class="container">
+                <p class="descr"style="font-family: Arial, Helvetica, sans-serif;">Shadow Example</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: #cd5c5c;
+}
+.header-main h1 {
+  color: rgb(44, 78, 67);
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+.header-main h1:hover {
+  color: black;
+}
+.header-main h1::after {
+  content: "homepage.";
+}
+.header-main p {
+  color: rgb(44, 78, 67);
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+.header-main p:hover {
+  color: black;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: url("https://wallpapers.com/images/hd/jet-plane-in-plain-blue-uuhlgn86zh6oisj8.webp") no-repeat center;
+        }
+        .main{
+                width: 100%;
+        }
+        #head1{
+            border: black 10px solid;
+            padding: 20px;
+            text-align: center;
+            width: 50%;
+            margin: 0px auto;
+            background-color: aliceblue;
+            opacity: 0.8;
+        }
+        #head2{
+            border: black 10px solid;
+            padding: 20px;
+            text-align: center;
+            width: 50%;
+            margin: 0px auto;
+            background-color: aliceblue;
+            opacity: 0.8;
+        }
+        h2{
+            font-size: 50px;
+            text-align: center;
+        }
+        div.div1{
+            display:flex;
+            margin: 10px;
+            border: solid black;
+            padding: 10px;
+            background-color: lightgreen;
+            opacity: 0.5;
+        }
+        div.div2{
+            display:flex;
+            margin: 10px;
+            border: solid black;
+            padding: 10px;
+            background-color: transparent;
+        }
+        div.div3{
+            display: flex;
+            margin: 10px;
+            background-color: black;
+            color: tomato;
+            padding: 10px;
+            border: solid currentColor;
+        }
+
+        div.inheritDiv{
+            border: solid red ;
+            background-color: antiquewhite;
+            opacity: 0.8;
+            margin: 10px;
+            padding: 10px;
+        }
+        div.inDiv2{
+            margin: 10px;
+            padding: 10px;
+        }
+        span{
+            border: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <h2 id="head1">Color Keywords</h2>
+    <div class="div1"> Description 1 for color keywords</div>
+    <div class="div2"> Description 2 for color keywords(transparent)</div>
+    <div class="div3"> Description 3 for color keywords (currentColor)</div>
+
+    <h2 id="head2">The Inherit Keyword</h2>
+    <div class="inheritDiv">Description <span>for color</span> keywords(Inherit)</div>
+    <div class="inDiv2" style="border: dotted blue">Description 2<span>for color</span> keywords(Inherit)</div>
+</div>
+
+</body>
+</html>

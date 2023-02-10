@@ -1,0 +1,227 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. comparison by reference
+2. Cloning and merging, Object.assign
+3. Nested cloning
+4. Method
+5. this keyword
+6. Constructor and 'new'
+7. Symbols
+
+***NOTE:
+> Functions that are stored in object properties are called “methods”.
+> Methods allow objects to “act” like object.doSomething().
+> Methods can reference the object as this.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        "use strict";
+
+    // 1. comparison by reference
+        // let a = {};
+        // let b = a; // copy the reference
+        // alert( a == b ); // true, both variables reference the same object
+        // alert( a === b ); // true
+
+    // 2. Cloning and merging, Object.assign
+        // let user = {
+        //     name: "John",
+        //     age:30
+        // };
+        // let clone = {}; //the new empty object
+        // // let's copy all user properties into it
+        //  for(let key in user){
+        //     clone[key] = user[key];
+        //  }
+        //  clone.name = "pete";   // changed the data in it
+        //  alert(user.name); // still John in the original object
+        //  alert(clone.name); //pete
+
+
+
+        // //  Object.assign
+        // //
+        // // We can also use the method Object.assign.
+
+        // // The syntax is:  Object.assign(dest, ...sources)
+        // // The first argument dest is a target object.
+        // // Further arguments is a list of source objects.
+        // let user = {
+        //     name: "John"
+        // };
+        // let permission1 = {
+        //     canView: true
+        // };
+        // let permission2 = {
+        //     canEdit: true
+        // };
+        // // copies all properties from permissions1 and permissions2 into user
+        // Object.assign(user, permission1, permission2);
+        // // now user = { name: "John", canView: true, canEdit: true }
+        // alert(user.name);
+        // alert(`${user.name} can view: ${user.canView}`);
+        // alert(`${user.name} can edit: ${user.canEdit}`);
+
+        
+    // 3. Nested cloning
+        
+        // // Until now we assumed that all properties of user are primitive. But properties can be references to other objects.
+        // // Like this:
+        // let user = {
+        //     name: "uName",
+        //     sizes: {
+        //         height: 170,
+        //         width: 50
+        //     }
+        // };
+        // alert(user.sizes.height);
+
+
+        // let user = {
+        //     name: "uName",
+        //     sizes: {
+        //         height: 170,
+        //         width: 50
+        //     }
+        // };
+        // let clone1 = Object.assign({}, user);
+        // alert(user.name === clone1.name);   // true, same object
+        // // user and clone share sizes
+        // user.sizes.width = 60;  // change a property from one place
+        // alert(clone1.sizes.width);  // 60, get the result from the other one
+
+        // structuredClone
+        
+        // let user = {
+        //     name: "uName",
+        //     sizes: {
+        //         height: 170,
+        //         width: 50
+        //     }
+        // };
+        // let clone2 = structuredClone(user);
+        // alert( user.sizes === clone2.sizes ); // false, different objects
+        // // user and clone are totally unrelated now
+        // user.sizes.width = 60;    // change a property from one place
+        // alert(clone2.sizes.width); // 50, not related
+
+
+
+    //4. Method
+        
+        // let user = {
+        //     name: "John",
+        //     age: 30
+        // };
+        // user.sayHi = function() {
+        // alert("Hello!");
+        // };
+        // user.sayHi(); // Hello!
+
+
+        // // Method shorthand:
+        // // There exists a shorter syntax for methods in an object literal:
+        // // these objects do the same        
+        // user = {
+        //     sayHi: function() {
+        //         alert("Hello");
+        //     }
+        // };
+        //
+        // // method shorthand looks better, right?
+        // user = {
+        //     sayHi() {   // same as "sayHi: function(){...}"
+        //         alert("Hello");
+        //     }
+        // };
+
+
+
+    // 5. this keyword
+        // function fun1(){
+        //     let sum = 2+2;
+        //     console.log(sum);
+        //     console.log(this);  //undefined(because we have used strict mode) or otherwise it refers to global object
+        // }
+        // fun1();
+
+        // let obj1 = {
+        //     name: "John",
+        //     age: 30,
+        //     fun2: function(){
+        //         let sum = 2+2;
+        //         console.log(sum);
+        //         console.log(this); // refers to the object(obj1)
+        //         console.log(this.name);
+        //     }
+        // };
+        // obj1.fun2();
+
+
+
+    // 6. Constructor and 'new'
+        
+        // // Constructor function for Person objects
+        // function Person(first, last, age, eye){
+        //     this.firstName = first;
+        //     this.lastName = last;
+        //     this.age = age;
+        //     this.eyeColor = eye;
+        // }
+        // // Create two Person objects
+        // const myFather = new Person("firstName1", "lastName1", 50, "Brown");
+        // const myMother = new Person("firstName2", "lastName2", 47, "Black");
+
+        // // Display age
+        // // id- demo is defined in body
+        // document.getElementById('demo').innerHTML = "My father is " + myFather.age + ".<br>My mother is " + myMother.age + ".";
+
+    // 7. Symbols
+        // let var1 = Symbol("My Var ID");
+        // let var2 = Symbol("My Var ID");
+        // console.log(var1, typeof var1);
+        // console.log(var1 === var2);
+
+
+        // let var1 = "Hello";
+        // let var2 = "World";
+        // var1 = Symbol();
+        // console.log(typeof var1); //symbol
+        // console.log(typeof var2);   //string
+
+
+
+
+        // let name1 = Symbol("Identifier for var1");
+        // let name2 = Symbol("Identifier for var2");
+
+        // let obj1 = {};
+        // obj1[name1] = "Joy";
+        // obj1[name2] = "Darsh";
+        // obj1["name3"]="John";  
+
+        // console.log(typeof var1); //symbol
+        // console.log(typeof var2);   //symbol
+        // console.log(obj1);
+        // console.log(obj1[name1]);   //Joy 
+        // console.log(name1===name2); //false
+        // console.log(obj1.var2); // cannot write this get World string---- it will give "undefined" as output
+        
+        // for(let key in obj1){
+        //     console.log(obj1[key]); // only John will get printed, because the symbols are ignored in for in loop
+        // }
+
+
+    </script>    
+
+</body>
+</html>

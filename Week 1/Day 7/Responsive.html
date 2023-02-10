@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: aquamarine;
+            font-size: 30px;
+            text-align: center;
+            margin-top: 200px;
+            display: none;
+        }
+        @media only screen and (max-width:400px){
+            #m1{
+                display: block;
+                background-color: sandybrown;
+            }
+        }
+        @media only screen and (min-width:401px) and (max-width:700px){
+            #t1{
+                display: block;
+                background-color: rgb(96, 244, 197);
+            }
+        }
+        @media only screen and (min-width:701px) and (max-width:1200px){
+            #d1{
+                display: block;
+                background-color: rgb(130, 96, 244);
+            }
+        }
+        @media only screen and (min-width:1201px){
+            #l1{
+                display: block;
+                background-color: rgb(244, 96, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box" id="m1">Mobile Width</div>
+        <div class="box" id="t1">Tablet Width</div>
+        <div class="box" id="d1">Desktop Width</div>
+        <div class="box" id="l1">Large Screen Width</div>
+    </div>
+</body>
+</html>

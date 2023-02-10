@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <style>
+        .frame-parent{
+            text-align: center;
+        }
+        #frame{
+            width: auto;
+        }
+    </style>
+</head>
+<body> 
+
+<!-- <video width="400" controls autoplay muted>
+  <source src="mov_bbb.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML video.
+</video> -->
+<div style="text-align: center; margin-top: 25px;">
+    <input type="button" onclick="PlayPause()" value="Play/Pause">
+    <input type="button" onclick="MuteUnmute()" value="Mute/Unmute">
+    <input type="button" onclick="makeSmall()" value="Small">
+    <input type="button" onclick="makeBig()" value="Big">
+    <input type="button" onclick="makeNormal()" value="Normal">
+</div><br><br>
+<div style="text-align: center;">
+    <video id="video1" width="700" autoplay controls muted>
+        <source src="mov_bbb.mp4" type="video/mp4">
+        <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
+    </video><br><br>
+</div>
+
+<br>
+<br>
+
+<script>
+    var myVideo = document.getElementById("video1");
+
+    function PlayPause(){
+        // myVideo.pause()=!myVideo.pause()
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+    function MuteUnmute(){
+        if (myVideo.muted){
+            myVideo.muted=false;
+        }else{
+            myVideo.muted=true;
+        }
+
+        // myVideo.muted=!myVideo.muted
+    }
+    function makeSmall(){
+        myVideo.width="500";
+    }
+
+    function makeBig(){
+        myVideo.width="900";
+    }
+
+    function makeNormal(){
+        myVideo.width="700";
+    }
+
+</script>
+<div class="frame-parent">
+<iframe id="frame1" width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+</div>
+
+
+<p style="text-align: center;">
+Video courtesy of 
+<a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.
+</p>
+
+</body> 
+</html>
+

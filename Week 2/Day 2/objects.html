@@ -1,0 +1,133 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. Literals
+2. Square brackets
+3. for in loop
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+    // 1. Literals
+        // // We can immediately put some properties into {...} as “key: value” pairs:
+        // let user = {     // an object
+        // name: "John",  // by key "name" store value "John"
+        // age: 30        // by key "age" store value 30  
+        // };
+        // alert(`${user.name}` + " " + `${user.age}`);
+
+
+    // 2. Square brackets
+        // // this would give a syntax error
+        //     user.likes birds = true
+        // // it can be like this
+        //     let user = {};
+        //     // set
+        //     user["likes birds"] = true;
+        //     // get
+        //     alert(user["likes birds"]); // true
+        //     // delete
+        //     delete user["likes birds"];
+
+        // let key = "likes birds";
+        // user[key] = true;   // same as user["likes birds"] = true;
+        
+        
+        // let user = {
+        //     name: "John",
+        //     age: 30,
+        //     city: "Ahmedabad"
+        // };
+        // let key = prompt("What do you want to know about the user ?", "name");
+        // alert(user[key]);   // John (if enter "name")
+
+
+        // let user = {
+        // name: "John",
+        // age: 30
+        // };
+        // let key = "name";
+        // alert(user.name); // John
+        // alert( user.key ) // undefined
+
+
+        // let fruit = prompt("Name a fruit","apple");
+        // let bag = {
+        //     [fruit]: 5   // the name of the property is taken from the variable fruit
+        // };
+        // alert(bag.apple); //5, if fruit ="apple" 
+
+
+    // Property value shorthand
+        // In real code, we often use existing variables as values for property names.
+        // function makeUser(name, age) {
+        //     return {
+        //         name: name,
+        //         age: age
+        //         // ...other properties
+        //     };
+        // }
+        // let user = makeUser("John", 30);
+        // alert(user.name);   // John
+
+        // In the example above, properties have the same names as variables. The use-case of making a property from a variable is so common, that there’s a special property value shorthand to make it shorter.
+
+        // Instead of name:name we can just write name, like this:
+
+        // function makeUser(name, age) {
+        //     return {
+        //         name, // same as name: name
+        //         age,  // same as age: age
+        //         // ...
+        //     };
+        // }
+        // let user = makeUser("John", 30);
+        // alert(user.name);   // John
+
+
+
+    //property name limitations
+        // these properties are all right
+        // let obj1 = {
+        //     val1: 1,
+        //     val2: 2,
+        //     val3: 3
+        // };
+        // alert(obj1.val1); //1
+        // alert(obj1.val2); //2
+        // alert(obj1.val3); //3
+        // alert(obj1.val1 + obj1.val2 + obj1.val3); //6
+
+        // let obj2= {
+        //     0: "test"   // same as "0": "test"
+        // };
+        // // both alerts access the same property (the number 0 is converted to string "0")
+        // alert(obj2[0]); // test
+        // alert(obj2["0"]);   // test (same property)
+
+    // 3. for in loop
+    // Property existence test, “in” operator
+    // for in loop:
+        // let obj = {
+        //     name: "John",
+        //     age: 30,
+        //     city: "Ahmedabad",
+        //     email: "john@gmail.com"
+        // };
+
+        // for(let i in obj){
+        //     document.write(obj[i]+"<br>");
+        // }
+
+    </script>
+</body>
+</html>

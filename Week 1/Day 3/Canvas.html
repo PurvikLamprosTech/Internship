@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <p>Image to use:</p>
+    <img id="image11" src="C:\Users\Purvik\Pictures\Screenshots\OLD\Screenshot (41).png" alt="canvas-img" style="height: 300px; width: 500px;"> -->
+    <p>Canvas to fill:</p>
+    <canvas id="myCanvas" width="500" height="300" style="border:1px solid #11110f;">Your browser does not support the HTML canvas tag.</canvas>
+    <script>
+        window.onload = function() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        let img = new Image();
+        img.src = 'https://fjolt.com/images/misc/202203281.png'
+        // var img = document.getElementById("image11");
+        // img.scr='C:\Users\Purvik\Pictures\Screenshots\OLD\Screenshot (41).png';
+        ctx.drawImage(img, 0, 0, 500, 300);
+        // ctx.fillStyle='blue';
+        // ctx.fillRect(0,0,200,80);
+        // ctx.fillStyle='green';
+        // ctx.fillRect(0,120,200,200);
+        // var ctx = c.getContext("2d");
+        // ctx.moveTo(0,0);
+        // ctx.lineTo(200,200);
+        // ctx.stroke();
+        }
+    </script>
+    
+</body>
+</html>

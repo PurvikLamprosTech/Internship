@@ -1,0 +1,49 @@
+@import "mixins";  //example of @import the partial files will get import here
+@import "vars";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $bg-color; 
+}
+
+//Operators
+//variables
+//nesting
+//mixin - (works same as the functions in java by declaring as '@mixin mixinName')
+//parameters - passing value by parameterized variables
+//partials - creating different pages(files) and adding in one file. {**NOTE: we must add '_' eg:"_filename.scss" before naming partial files, so that those partial files will not get manipulated or compiled by any compiler} 
+//@import - we import partial files by this
+//@extend - using some properties of another class
+
+.header-main{
+    @include mixinName1;                     //calling mixin by @include
+    width: 100vw;
+    height:100vh;
+    background: $bg-color;                   // here we have used the variable to set the background color.
+
+    h1{                                      //from line this line to the line before ending the main header are an example of nesting 
+        @include mixinName2(1rem + 2rem, 0.5rem);
+        &:hover{                             //here the "&" symbol will works as inherit from the current class in which it is present
+            color: black;
+        }
+        &::after{
+            content: "homepage.";            //here we can also use the element by nesting
+        }
+    }
+    p{
+        @include name2(1rem + 1rem, 0.3rem); //here we are passing values in parameters that we declared earlier in the mixin declaration
+        &:hover{
+            color: black;
+        }
+    }
+}
+
+.main-ext{
+    width: 100vw;
+    height:100vh;
+    background: $bg-color;
+}
