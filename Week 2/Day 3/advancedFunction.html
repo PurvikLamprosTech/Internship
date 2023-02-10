@@ -1,6 +1,15 @@
 <!--This file contains:
 ***reference: https://javascript.info/***
 Advanced working with functions
+1. Recursive function
+2. Recursive traversals
+3. Rest parameters
+3. Nested functions
+
+**NOTE**
+There are two main differences of var compared to let/const:
+1. var variables have no block scope, their visibility is scoped to current function, or global, if declared outside function.
+2. var declarations are processed at function start (script start for globals).
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +20,67 @@ Advanced working with functions
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        "use strict";
+
+    // 1. Recursive function
+        // function pow(x,n){
+        //     if(n==1){
+        //         return x;
+        //     }else{
+        //         return x * pow(x,n-1);
+        //     }
+        // }
+        // alert(pow(2,3));
+
+
+
+    //2. Recursive traversals
+        // // A company has departments.
+        // // > A department may have an array of staff. For instance, sales department has 2 employees: John and Alice.
+        // // > Or a department may split into subdepartments, like development has two branches: sites and internals. Each of them has their own staff.
+        // let company = {
+        //         sales: [{name: "John", salary: 10000}, { name: "Alice", salary: 15000}],
+        //     development: { 
+        //         site: [{name: "Bob", salary: 20000}, {name: "Peter", salary: 25000 }],
+        //         internals: [{ name: "Jack", salary: 30000 }]
+        //     }
+        // };
+
+
+    //3. Rest Parameters
+        // function sum(a, b) {
+        // return a + b;
+        // }
+        // alert(sum(1, 2, 3, 4, 5)); //3, only the first two will be counted
+
+        // The rest of the parameters can be included in the function definition by using three dots ...
+        // function sumAll(...args1){  // args1 is the name for the array
+        //     let sum = 0;
+        //     for (let arg of args1){
+        //         sum = sum + arg;   
+        //     }
+        //     return sum;
+        // }
+        // alert(sumAll(1));       //1
+        // alert(sumAll(1, 2));    //3
+        // alert(sumAll(1, 2, 3)); //6
+
+
+
+    //4. Nested functions
+        // function sayHiBye(firstName, lastName){
+        //     // helper nested function to use below
+        //     function getFullName(){
+        //         return firstName + " " + lastName;
+        //     }
+        
+        // alert("Hello " + getFullName());
+        // alert("Bye " + getFullName());
+        // }   
+        // sayHiBye("John","Wick");
+
+
+    </script>
 </body>
 </html>
