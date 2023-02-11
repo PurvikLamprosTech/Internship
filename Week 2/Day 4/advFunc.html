@@ -1,0 +1,201 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+Advanced working with functions
+1. The “name” property
+2. The “length” property
+3. Named Function Expression
+4. The "new Function" syntax
+5. Scheduling: setTimeout and setInterval
+6. call, apply and bind method
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+// 1. The “name” property - returns the name of a function
+        // let user = {
+        //     sayHi(){
+        //         alert("Hi");
+        //     },
+        //     sayBye: function(){
+        //         alert("Bye");
+        //     }
+        // };
+        // alert(user.sayHi.name);     //sayHi
+        // alert(user.sayBye.name);    //sayBye
+        // alert(user.sayHi().name);   //Hi
+
+
+
+// 2. The “length” property - returns no. of parameters presents in a function
+        // function f1(a,b){}
+        // let f2 = function(a,b,c){}
+        // function many(a, b, ...more){}
+        // alert(f1.length);   //2
+        // alert(f2.length);   //3
+        // alert(many.length); //2
+
+
+
+// 3. Named Function Expression
+        // // There are two special things about the name func, that are the reasons for it:
+        // //     > It allows the function to reference itself internally.
+        // //     > It is not visible outside of the function.
+        // let sayHi = function func(par1){
+        //     alert(`Hello, ${par1}`);
+        // }
+        // sayHi("John");
+
+
+
+// 4. The "new Function" syntax
+    // // The syntax for creating a function:
+    // //   > let func = new Function ([arg1, arg2, ...argN], functionBody);
+        // let sum = new Function('a','b','return a + b');
+        // alert(sum(1,2));
+        // // And here there’s a function without arguments, with only the function body:
+        // let func1 = new Function(alert("Hello World.."));
+        // func1();
+    
+
+
+// 5. Scheduling: setTimeout and setInterval
+    // // > setTimeout allows us to run a function once after the interval of time.
+    // // > setInterval allows us to run a function repeatedly, starting after the interval of time, then repeating continuously at that interval.
+    //
+    // //1. setTimeout:
+    // // Syntax : let timerId = setTimeout(func|code, [delay], [arg1], [arg2], ...)
+
+        // let setT = setTimeout(function(){   //setTimeout function is used 
+        //     alert("Hello World...");
+        // }, 3000)        // 3000ms for delay
+
+        // const sum = (a,b) => { 
+        //     console.log("I am running " + (a + b));
+        //     a + b
+        // } 
+        // setTimeout(sum, 1000, 1, 2);
+
+
+    // // 2. setInterval:
+    // // The setInterval method has the same syntax as setTimeout:
+    // // Syntax: let timerId = setInterval(func|code, [delay], [arg1], [arg2], ...)
+        
+        // setInterval(function(){
+        //     console.log("setInterval is running in every 3 seconds");
+        // }, 3000)
+        
+
+        // let sum = (a, b) => {
+        //     console.log(a + b);
+        // }
+        // setInterval(sum, 2000, 1, 2);
+
+
+
+// 6. call, apply and bind method
+        
+    // //(i) call:- function borrowing
+    // // normal 
+        // let objEx = {
+        //     firstName: "John",
+        //     lastName: "Wick",
+        //     fullName: function(){
+        //         alert(this.firstName + " " + this.lastName);
+        //     }
+        // };
+        // objEx.fullName();
+
+
+    // using call method
+        // let objEx3 = {
+        //     firstName: "Tony",
+        //     lastName: "Stark",
+        //     funEx3: function(){
+        //     alert(this.firstName + " " + this.lastName);
+        //     }
+        // };
+        //
+        // let objEx4 = {
+        //     firstName: "Bruce",
+        //     lastName: "Banner",
+        // };
+        // objEx3.funEx3();            //Tony Stark
+        // objEx3.funEx3.call(objEx4); //Bruce Banner
+
+    // with parameters, syntax > functionName.call(objectName, par1, par2);
+        // let objEx1 = {
+        //     firstName: "Tony",
+        //     lastName: "Stark"
+        // };
+        //
+        // let objEx2 = {
+        //     firstName: "Peter",
+        //     lastName: "Parker"
+        // };
+        //  
+        // let funEx1 = function(state, country){
+        //     alert(this.firstName + " " + this.lastName + " from " + state + ", " + country);
+        // }
+        // funEx1.call(objEx1, "California", "United States");  //call
+        // funEx1.call(objEx2, "New York", "United States");    //call
+
+    // //(ii) apply:- the only difference between call and apply is the way we pass arguments
+    // // in apply method we pass the arguments in a list '[arg1, arg2]' like that
+        // let objEx1 = {
+        //     firstName: "Tony",
+        //     lastName: "Stark"
+        // };
+        //
+        // let objEx2 = {
+        //     firstName: "Peter",
+        //     lastName: "Parker"
+        // };
+        //
+        // let funEx1 = function(state, country){
+        //     alert(this.firstName + " " + this.lastName + " from " + state + ", " + country);
+        // }
+        // funEx1.apply(objEx1, ["California", "United States"]);  //apply 
+        // funEx1.apply(objEx2, ["New York", "United States"]);    //apply
+
+    // //(iii) bind method: - bind method works same as the call method, but here we have to bind a function in a variable
+    // // example:
+        // let objEx1 = {
+        //     firstName: "Tony",
+        //     lastName: "Stark"
+        // };
+
+        // let objEx2 = {
+        //     firstName: "Peter",
+        //     lastName: "Parker"
+        // };
+        
+        // let funEx1 = function(state, country){
+        //     alert(this.firstName + " " + this.lastName + " from " + state + ", " + country);
+        // }
+
+        // let var1 = funEx1.bind(objEx1, ["California", "United States"]); //bind method, binding with variable
+        // let var2 = funEx1.bind(objEx2, ["New York", "United States"]);   //bind method
+        // // also we have to call this variable after using bind method
+        // // to check if this is method we are checking in console as:
+        // console.log(var1);
+        // // so therefore we have to invoke this method (in our case it is var1 and var2) as:
+        // var1();
+        // var2();
+
+
+
+
+
+
+    </script>
+</body>
+</html>
