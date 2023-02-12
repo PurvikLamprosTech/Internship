@@ -1,0 +1,82 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. Prototypal Inheritance
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+
+// 1. Prototypal Inheritance
+
+        // let object1 = {
+        //     name: "Joy",
+        //     city: "New York",
+        //
+        //     getIntro: function(){
+        //         console.log(this.name + " from " + this.city);
+        //     }
+        // };
+        //
+        // let object2 = {
+        //     name: "Mark"
+        // };
+        //
+        // object2.__proto__ = object1; //here object1's property inherits in object2 //*NOTE: Never do this
+        //
+        // console.log(object2.city); // New York
+
+
+        // let user = {
+        //     name: "Mark",
+        //     surname: "Henry",
+        //
+        //     get fullName(){
+        //         return `${this.name} ${this.surname}`;
+        //     },
+        //
+        //     set fullName(value){
+        //         return [this.name, this.surname] = value.split(" ");
+        //     }
+        // };
+        //
+        // let admin = {
+        //     __proto__:user,
+        //     isAdmin: true
+        // };
+        //
+        // alert(admin.fullName);  //Mark Henry
+        //
+        // admin.fullName = "Tony Stark";
+        // alert(admin.fullName);  // Tony Stark, state of admin modified
+        // alert(user.fullName);   // Mark Henry, state of user protected
+
+        
+    //for in loop
+        // let animal = {
+        //     eats: true
+        // };
+        // let rabbit = {
+        //     jumps: true,
+        //     __proto__: animal
+        // };
+        // // Object.keys only returns own keys
+        // alert(Object.keys(rabbit)); //jumps
+        // // for..in loops over both own and inherited keys
+        // for(let key in rabbit){
+        //     alert(key);     // jumps, then eats
+        // }
+    </script>
+</body>
+</html>

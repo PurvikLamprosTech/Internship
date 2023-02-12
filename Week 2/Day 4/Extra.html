@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use script";
+
+        let arr = ["John","Stephen","Chandler"];
+        let obj = {
+            name: "Marcus",
+            age: 30,
+            city: "New York",
+            getIntro: function(){
+                console.log(this.name +" from "+ this.city);
+            }
+        };
+        console.log(arr[0],arr[1],arr[2]);
+        for(let k in arr){
+            console.log(arr[k]);
+        }
+        obj.getIntro();
+        function func(){
+            console.log("Function is running");
+        }
+        func();
+
+        let obj2 = {
+            name: "Mark"
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. Property flags and descriptors
+2. getters and setters
+
+
+**NOTES**
+Property flags:
+Object properties, besides a value, have three special attributes (so-called “flags”):
+> writable – if true, the value can be changed, otherwise it’s read-only.
+> enumerable – if true, then listed in loops, otherwise not listed.
+> configurable – if true, the property can be deleted and these attributes can be modified, otherwise not.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+
+// 1. Property flags and descriptors
+    // to check the properties, we use > Object.getOwnPropertyDescriptor(objectName, propertyName)
+        // let obj1 = {
+        //     name: "John",
+        //     age: 30,
+        //     isMarried: true,
+        //     address: "New York",
+        //     havePet: true,
+        //     petAnimal: "Dog"
+        // };
+        //
+        // let descriptor1 = Object.getOwnPropertyDescriptor(obj1, 'name');
+        // console.log(JSON.stringify(descriptor1));
+
+
+    // to define the properties or to change the flags, we use > Object.defineProperty(objectName, propertyName, descriptor)
+        // let obj2 = {
+        //     name: "John",
+        //     isMarried: true,
+        //     address: "New York",
+        //     havePet: true,
+        //     petAnimal: "Dog"
+        // };
+        //
+        // Object.defineProperty(obj2, "age", {value: 30, writable: false});
+        // let descriptor2 = Object.getOwnPropertyDescriptor(obj2, 'age');
+        // console.log(JSON.stringify(descriptor2));
+
+
+        
+// 2. getters and setters
+    //(i) getter - to get any values after manipulation.. 
+        // let person = {
+        //     name: "John",
+        //     age: 30,
+        //
+        //     getName0: function(){               // normal function that returns the string in lower case
+        //         return this.name.toLowerCase();
+        //     },
+        //     get getName(){                      // getter function that returns the string in upper case
+        //         return this.name.toUpperCase();
+        //     }
+        // };
+        // console.log(person);            // prints the whole object with property(actual value)
+        // console.log(person.getName0()); // calling function - getName0();
+        // console.log(person.getName);    // calling getter - getName
+
+
+    //(i) setter - 
+        // let person = {
+        //     name: "John",
+        //     surname: "Wick",
+        //
+        //     get fullName(){
+        //         return `${this.name} ${this.surname}`; 
+        //     },
+        //  
+        //     set fullName(value){                                //setter for updating name and surname
+        //         return [this.name, this.surname] = value.split(" ");    // split function will split the name after the space(which we have to define in the double quotes).
+        //     },
+        //
+        //     set upLetter(value1){                               //setter for converting letters into upper case
+        //         return this.fullName = value1.toUpperCase();
+        //     }
+        //
+        // };
+        // console.log(person.fullName);   //John Wick
+        // console.log(person);            //prints object with properties(actual data)
+        // person.fullName="Tony Stark";   //setting the name as Tony Stark
+        // console.log(person.fullName);   //prints the name as Tony Stark
+        // console.log(person);            //prints objects with properties(updated data{name and surname})
+        // person.upLetter = "Tony Stark"; //setting name to perform an action in the defined set{letters to upper case}
+        // console.log(person);            //prints objects with properties(updated data{upper case})
+        
+
+
+    </script>
+</body>
+</html>
