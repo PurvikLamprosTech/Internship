@@ -1,0 +1,82 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+Classes
+1. class basics
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+// 1. class basics
+        // So, what exactly is a class? That’s not an entirely new language-level entity, as one might think.
+        // Let’s unveil any magic and see what a class really is. That’ll help in understanding many complex aspects.
+        // In JavaScript, a class is a kind of function.
+        // The basic syntax is:
+        // class MyClass {
+        // // class methods
+        // constructor() { ... }
+        // method1() { ... }
+        // method2() { ... }
+        // method3() { ... }
+        // ...
+        // }
+
+        // class User1 {
+        //     constructor(name){
+        //         this.name = name;
+        //     }
+
+        //     sayHi(){
+        //         alert(this.name);
+        //     }
+        // }
+        // // Usage:
+        // let user = new User1("John");
+        // user.sayHi();
+
+    //constructor
+        class railwayForm {
+            constructor(givenName, trainNo, address){
+                console.log(" Constructor called " + givenName + " " + trainNo + " " + address);
+                this.givenName = givenName;
+                this.trainNo = trainNo;
+                this.address = address;
+            }
+
+            preview1(){
+                console.log(this.givenName + " your form for train no " + this.trainNo + " " + this.address);
+            }
+        
+            submit1(){
+                console.log(this.givenName + " your form is submitted for train no " + this.trainNo + " " + this.address);
+            }
+
+            cancel1(){
+                console.log(this.givenName + " your form is cancelled for train no " + this.trainNo + " " + this.address);
+                this.trainNo = 0;
+            }
+        }
+
+        let obForm1 = new railwayForm("John", 121212, "New York");
+        obForm1.preview1();
+        obForm1.submit1();
+        obForm1.cancel1();
+        obForm1.preview1();
+
+
+
+
+
+    </script>
+</body>
+</html>
