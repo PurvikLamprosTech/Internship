@@ -1,0 +1,122 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+Error handling
+1. try...catch
+2. try…catch…finally
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+
+//1. try...catch
+
+    //normal
+        // setTimeout(()=>{
+        //     console.log("function 1 is running...");
+        // },1000)
+        // console.log(randomName) //it will throw an error and stops execution right after this... and stops the script
+        // setTimeout(()=>{
+        //     console.log("function 2 is running...");
+        // },2000)
+        
+        // setTimeout(()=>{
+        //     console.log("function 3 is running...");
+        // },3000)
+        
+        // setTimeout(()=>{
+        //     console.log("function 4 is running...");
+        // },4000)
+
+
+    //using try...catch
+        // setTimeout(()=>{
+        //     console.log("function 1 is running...");
+        // },1000)
+        // //with using try...catch, we can continue our execution even if we get any errors
+        // //and here we just log our error in console.... and the execution will still continues
+        // try{
+        //     console.log(randomName);
+        // }
+        // catch(error){
+        //     console.log(error + " we can write anything here"); //ReferenceError: randomName is not defined we can write anything here
+        // }
+        // setTimeout(()=>{
+        //     console.log("function 2 is running...");
+        // },2000)
+        
+        // setTimeout(()=>{
+        //     console.log("function 3 is running...");
+        // },3000)
+        
+        // setTimeout(()=>{
+        //     console.log("function 4 is running...");
+        // },4000)
+
+
+
+//2. try…catch…finally
+        //finally is basically to do a final cleanup
+        
+    // //without finally:-
+        // try{
+        //     console.log(xyz12);
+        //     console.log("Program ran successfully");
+        // }
+        // catch{
+        //     console.log(xyz12);             //here we added an error in the catch block... now it will throw an error and won't be execute any code after this
+        //     console.log("There is an error");
+        // }
+        // console.log("Hello World");     //this Hello World will not get printed, as we have an error in the catch block
+
+
+
+    // //now, we will add finally so that the problem of not executing any code after an error will overcome
+    // //with finally:-
+        // try{
+        //     console.log(xyz12);
+        //     console.log("Program ran successfully");
+        // }
+        // catch{
+        //     console.log("There is an error");
+        //     console.log(xyz12);             //adding an error to check whether our 'finally' is running or not 
+        // }
+        // finally{    //finally guarantees that no matter what, it will execute compulsory...
+        //     console.log("It runs compulsory, anyway. Even if there is no error"); //it will guaranteed get printed
+        //     //eg: we can close the file
+        //     //eg: exit the loop
+        //     //eg: write to the log file
+        // }
+
+
+        
+    //  //eg2: in this example we have seen that if we use try...catch...finally in a function and return it if no errors detected..but the finally is still gets executed after all this.. 
+        // const f = () =>{
+        //     try{
+        //         // console.log(xyz12); //---> suppose if there is no error like this then it will run successfully and returns all
+        //         console.log("Program ran successfully");
+        //         return;                 // and here we have used return..so that nothing gets executes after this.. but the 'finally' will still get executed, even if we use return..
+        //     }
+        //     catch{
+        //         console.log("There is an error");
+        //         // console.log(xyz12);             //adding an error to check whether our 'finally' is running or not 
+        //     }
+        //     finally{    //finally guarantees that no matter what, it will execute compulsory...
+        //         console.log("It runs compulsory, anyway. Even if there is an error or not"); //it will guaranteed get printed
+        //     }
+        // }
+        // f();    //calling function
+
+    </script>
+</body>
+</html>

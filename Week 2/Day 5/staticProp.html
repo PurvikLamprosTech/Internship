@@ -2,6 +2,7 @@
 ***reference: https://javascript.info/***
 Classes
 1. Static Methods
+2. instanceof operator
 
 -->
 <!DOCTYPE html>
@@ -16,9 +17,54 @@ Classes
     <script>
         "use strict";
 
-// 1. Static Methods
+// 1. Static Methods - static methods belongs to the whole class, not any particular object
 
-        
+        // class Animal{
+        //     constructor(name){
+        //         this.name1 = Animal.capitalize(name); // we cannot use 'this' or any method other than use only classname 
+        //     }
+        //     walk(){
+        //         console.log(`Animal ${this.name1} is walking`);
+        //     }
+        //
+        //     static capitalize(name){
+        //         return name.charAt(0).toUpperCase() + name.substr(1, name.length);
+        //     }
+        // }
+        //
+        // let a1 = new Animal("jack");
+        // a1.walk();
+        // // eg: console.log(a1.capitalize("xy123")); // ---> this doesn't work
+
+
+
+// 2. instanceof operator
+    // for class
+        // class Rabbit{
+        //         //
+        // }
+        // let r1 = new Rabbit();
+        // // is it an object of Rabbit class?
+        // console.log(r1 instanceof Rabbit);  //true, because r1 is an object of class Rabbit
+
+    // for function
+        // function Rabbit(){
+        //     //
+        // }
+        // let r2 = new Rabbit();
+        // console.log(r2 instanceof Rabbit);  //true
+
+    //changing the prototype
+        // function Rabbit1(){
+        //     //
+        // }
+        // let r3 = new Rabbit1();
+        // // changed the prototype
+        // Rabbit1.prototype = {};
+        // // ...not a r3 any more!
+        // console.log(r3 instanceof Rabbit1);  //false, because we changed its prototype
+
+                
     </script>
 </body>
 </html>
