@@ -2,6 +2,10 @@
 ***reference: https://javascript.info/***
 Classes
 1. class basics
+2. class inheritance - extends keyword
+3. method overriding
+4. super keyword in method overriding
+5. constructor overriding
 
 -->
 <!DOCTYPE html>
@@ -44,36 +48,215 @@ Classes
         // let user = new User1("John");
         // user.sayHi();
 
-    //constructor
-        class railwayForm {
-            constructor(givenName, trainNo, address){
-                console.log(" Constructor called " + givenName + " " + trainNo + " " + address);
-                this.givenName = givenName;
-                this.trainNo = trainNo;
-                this.address = address;
-            }
+    //constructor: we don't need to create multiple objects for same task.. if we use the constructor. it creates instance of an object.
+        //
+        // class railwayForm {
+        //     constructor(givenName, trainNo, address){
+        //         console.log(" Constructor called " + givenName + " " + trainNo + " " + address);
+        //         this.name = givenName;
+        //         this.trainNum = trainNo;
+        //         this.addr = address;
+        //     }
+        //
+        //     preview1(){
+        //         console.log(this.name + " your form for train no " + this.trainNum + " " + this.addr);
+        //     }
+        //
+        //     submit1(){
+        //         console.log(this.name + " your form is submitted for train no " + this.trainNum + " " + this.addr);
+        //     }
+        //
+        //     cancel1(){
+        //         console.log(this.name + " your form is cancelled for train no " + this.trainNum + " " + this.addr);
+        //         this.trainNum = 0;
+        //     }
+        // }
+        //
+        // let obForm1 = new railwayForm("John", 12212, "New York");
+        // obForm1.preview1();
+        // obForm1.submit1();
+        // obForm1.cancel1();
+        // obForm1.preview1();
 
-            preview1(){
-                console.log(this.givenName + " your form for train no " + this.trainNo + " " + this.address);
-            }
+
+
+    //getters and setters
+        //without get and set
+        // class User{
+        //     constructor(name){
+        //         this.name1 = name;
+        //     }
+        // }
+
+        // let user1 = new User("John");   //here we defined the name
+        // console.log(user1.name1);       // John
+
+
+        //with get and set
+        // class User{
+        //     constructor(name){
+        //         this.name1 = name;
+        //     }
+        //
+        //     get name1(){
+        //         return this._name;
+        //     }
+        //
+        //     set name1(value){
+        //         if(value.length < 4){
+        //             console.log("Length is too short");
+        //             return;
+        //         }else { 
+        //             this._name = value;
+        //         }
+        //     }
+        // }
+        //
+        // let user1 = new User("John");   //here we defined the name
+        // console.log(user1.name1);       // John
+        //
+        // let user2 = new User("Joy");    //Length is too short
+
+
+
+// 2. class inheritance - extends keyword
+        // class Animal{
+        //     constructor(name,color){
+        //         this.name1 = name;
+        //         this.color1 = color;
+        //     }
+        //
+        //     run(){
+        //         console.log(`${this.name1} is running !`);
+        //     }
+        //
+        //     eat(){
+        //         console.log(`${this.name1} is eating !`);
+        //     }
+        // }
+        //
+        // class Monkey extends Animal{
+        //     jump(){
+        //         console.log(`${this.name1} can jump high !`);
+        //     }
+        // }
+        // let d1 = new Animal("Bruno", "Brown");
+        // let m1 = new Monkey("M12", "Red");
+        // d1.run();   // Bruno is running !
+        // d1.eat();   // Bruno is eating !
+        // // d1.jump();  //error because it is not possible to use another class property without extending it.
+        // m1.run();   // M12 is running !
+        // m1.eat();   // M12 is eating !
+        // m1.jump();  // M12 can jump high !
         
-            submit1(){
-                console.log(this.givenName + " your form is submitted for train no " + this.trainNo + " " + this.address);
-            }
 
-            cancel1(){
-                console.log(this.givenName + " your form is cancelled for train no " + this.trainNo + " " + this.address);
-                this.trainNo = 0;
-            }
-        }
+        
+// 3. method overriding
+        // class Employee{
+        //
+        //     login(){
+        //         console.log(`Employee has logged in`);
+        //     }
+        //
+        //     logout(){
+        //         console.log(`Employee has logged out`);
+        //     }
+        //
+        //     break(){
+        //         console.log(`Employee has taken break`);
+        //     }
+        //
+        //     available(){
+        //         console.log(`Employee is available for work`);
+        //     }
+        //
+        //     requestLeaves(leaves){
+        //         console.log(`Employee has requested for ${leaves} leaves`);
+        //     }
+        // }
+        //
+        // class Programmer extends Employee{
+        //
+        //     requestCoffee(x){
+        //         console.log(`Employee has requested for ${x} coffees`)
+        //     }
+        //     //method overrides below
+        //     requestLeaves(leaves){  //here we overrides the 'requestLeaves' method, which is already defined in the Employee class
+        //         console.log(`Employee has requested for ${leaves + 1} leaves (one extra leave)`);
+        //     }
+        // }
+        //
+        // let e1 = new Employee();
+        // e1.login();                 //Employee has logged in
+        // e1.requestLeaves(3);        //Employee has requested for 3 leaves
+        // let p1 = new Programmer();  
+        // p1.login();                 //Employee has logged in
+        // p1.break();                 //Employee has taken break
+        // p1.requestCoffee(2);        //Employee has requested for 2 coffees
+        // p1.requestLeaves(3);        //Employee has requested for 4 leaves (one extra leave)
 
-        let obForm1 = new railwayForm("John", 121212, "New York");
-        obForm1.preview1();
-        obForm1.submit1();
-        obForm1.cancel1();
-        obForm1.preview1();
 
 
+// 4. super keyword in method overriding
+
+        // class Employee{
+        //
+        //     login(){
+        //         console.log(`Employee has logged in`);
+        //     }
+        //
+        //     logout(){
+        //         console.log(`Employee has logged out`);
+        //     }
+        //
+        //     requestLeaves(leaves){
+        //         console.log(`Employee has requested for ${leaves} leaves`);
+        //     }
+        // }
+        //
+        // class Programmer extends Employee{
+        //
+        //     requestCoffee(x){
+        //         console.log(`Employee has requested for ${x} coffees`)
+        //     }
+        //
+        //     requestLeaves(leaves){ //here we overrides the 'requestLeaves' method, which is already defined in the Employee class
+        //         super.requestLeaves(leaves+1);     //super keyword will use the property and also add some extra properties in it
+        //         console.log("Granted one extra leave");
+        //         //console.log(`Employee has requested for ${leaves + 1} leaves (one extra leave)`);
+        //     }
+        // }
+        //
+        // let e1 = new Employee();
+        // // e1.login();                 //Employee has logged in
+        // // e1.requestLeaves(3);        //Employee has requested for 3 leaves
+        // let p1 = new Programmer();  
+        // p1.login();                 //Employee has logged in
+        // p1.requestCoffee(2);        //Employee has requested for 2 coffees
+        // p1.requestLeaves(5);        //Employee has requested for 4 leaves (Granted one extra leave)
+
+
+
+// 5. constructor overriding
+    // Constructors in inheriting classes must call super(...), and (!) do it before using this.
+        // class Animal{
+        //     constructor(name,color){
+        //         this.name1 = name;
+        //         this.color1 = color;
+        //     }
+        // }
+        //
+        // class Rabbit extends Animal{
+        //     constructor(name, speed){
+        //         super(name);
+        //         this.name1 = name;
+        //         this.speed1 = speed;
+        //     }
+        // }
+        //
+        // let rab = new Rabbit("Rabbit-Name", 10);
+        // console.log(rab.name1);
+        // console.log(rab.speed1);
 
 
 
