@@ -1,0 +1,146 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+async/await
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use script";
+
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(() => {
+        //         a = 10;
+        //         resolve("Hello");
+        //     }, 1000);
+        // })
+        // console.log(data);          //Promise {<pending>}...
+        // data.then(()=>{             //10
+        //     console.log(a)
+        // })
+
+//1. async/await
+    //normal Promise inside function
+        // function getData(){
+        //     let myPromise = new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //           resolve("I am inside resolve !");
+        //         }, 1000);
+        //     })
+        //     console.log(myPromise);
+
+        //     myPromise.then((item)=>{
+        //         console.log("I am inside then block : ", item);
+        //     })
+
+        // }
+        // getData();
+
+
+
+    //  //with async/await function
+    //  // we don't need to write below code(consuming code - 'then') to resolve the promise
+    //  // myPromise.then((item)=>{
+    //  //     console.log("I am inside then block : ", item);
+    //  // })
+    //  //Example:
+        //     async function getData(){
+        //         let myPromise = new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //               resolve("I am inside resolve, from myPromise !");
+        //             }, 1000);
+        //         })
+        //         console.log(myPromise);
+        //         let item = await myPromise;
+        //         console.log("Random statement 1 :", item);
+
+        //     }
+        //     getData();
+
+
+
+    //  //Example2:
+        // async function getData(){
+        //     let myPromise = new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //           resolve("I am inside resolve, from myPromise !");
+        //         }, 1000);
+        //     })
+        //     let myPromise2 = new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //           resolve("I am inside resolve, from myPromise2 !");
+        //         }, 1000);
+        //     })
+        //     let myPromise3 = new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //           resolve("I am inside resolve, from myPromise3 !");
+        //         }, 1000);
+        //     })
+        //     // console.log(myPromise);
+
+        //     let item = await myPromise;
+        //     let item2 = await myPromise2;
+        //     let item3 = await myPromise3;
+        //     // console.log("Random statement : ", item, item2, item3); //we can also do this
+        //     console.log("Random statement 1 :", item);
+        //     console.log("Random statement 2 :", item2);
+        //     console.log("Random statement 3 :", item3);
+        // }
+        // getData();
+
+
+    // we can now properly synchronize
+    //Example:
+        // async function getData(){
+        //     let myPromise = new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //           resolve("I am inside resolve, from myPromise !");
+        //         }, 2000);
+        //     })
+        //     console.log("1st");                     // it will executes first
+        //     let item = await myPromise;
+        //     console.log("2nd Random statement :", item);    // it will executes second
+        //     setTimeout(() => {
+        //         console.log("3rd");                     // it will executes third, after 1 second of executing the 2nd log
+        //     }, 1000);
+            
+        // }
+        // getData();
+
+
+
+    // //Example with API:
+    // // as we know that the API returns two promises so we'll do like:
+        //     async function getData(){
+        //         let data = await fetch("https://dummy.restapiexample.com/api/v1/employees");
+        //         data = await data.json();           //another to print API data in json format
+        //         console.log(data);
+        //     }
+        //     getData();
+
+
+
+    // //Example: after removing/commenting/returning some lines:-
+    //     async function getData(){
+    //         // let data = await fetch("https://dummy.restapiexample.com/api/v1/employees");     //commented this
+    //         // data = await data.json();           //another to print API data in json format   //commented this
+    //         // console.log(data);                                                               //commented this
+    //         // return 000;     // it will return, Promise {<fulfilled>: 0}
+    //         // return "000";   // it will return, Promise {<fulfilled>: '000'}
+    //         return "abc";   // it will return, Promise {<fulfilled>: 'abc'}
+    //     }
+    //     // getData();                                                                           //commented this
+    //     console.log(getData());     // it will print, Promise
+        
+
+        
+    </script>
+</body>
+</html>
