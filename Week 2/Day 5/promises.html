@@ -1,0 +1,387 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+Promises, async/await
+1. promises - it has 2 major things (resolve, reject)
+2. promise API 
+3. Promise chaining
+4. finally keyword 
+5. error handling
+6. promise.all, promise.allSettled, promise.race
+
+
+**NOTES**
+> promises - it has 2 major things (resolve, reject)..  if we use 'resolve' then it executed 'then' and if we use 'reject' then it executes 'catch'
+> fetch() - it is a function that is already provided by the Promise, to call API
+> whenever we resolve the API promise.. it has still one more promise to resolve.. so it is compulsory to resolve 2 promises to get the data from API in promises
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+// 1. promises:
+    // //normal: (problem:/)
+        // let data = 1;
+        // console.log("first ",data);      //3
+        // data = 2;
+        // setTimeout(() => {
+        //     console.log("second ",data);  //3, it will not print 2 because before that the data=3 is already happened, thats why we get 3
+        // }, 2000);
+        // data = 3;
+        // console.log("last ",data);      //3
+
+    // // simple promise example:
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         // console.log("code has been executed");  //if you write this then it will print in log
+        //         resolve("code has been executed");  //it will executed inside promise > [[PromiseResult]]:. to executed or it in our code we will implement 'then'
+        //     })
+        // })
+        // // console.log(data);  //it will return the promise 
+        // //to use the code we have to do like this, as given below:
+        // data.then((item)=>{ // then means the result should be get after the Promise will execute
+        //     console.log(item);  //output: code has been executed
+        // })   
+        
+        
+    // //promises - it has 2 major things (resolve, reject)..  if we use 'resolve' then it executed 'then' and if we use 'reject' then it executes 'catch'
+    // //using resolve - that executes 'then':
+    //     let data = new Promise((resolve,reject)=>{
+    //         setTimeout(() => {
+    //             resolve(10);
+    //         }, 2000);
+    //     })
+
+    //     data.then((item)=>{             //executes this one
+    //         console.log("1st ", item);  //10         
+    //     }).catch(()=>{
+    //         console.log("There is an error");
+    //     })
+
+    // //using reject - that executes 'catch':
+    //     let data2 = new Promise((resolve,reject)=>{
+    //         setTimeout(() => {
+    //             reject(10);
+    //         }, 2000);
+    //     })
+
+    //     data2.then((item2)=>{             
+    //         console.log("1st ", item2);        
+    //     }).catch(()=>{                    //executes this one
+    //         console.log("There is an error");
+    //     })
+
+
+
+    // normal example of promise
+        // // producing code:
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         resolve({name:"John", age:30}); //like this we can also pass some objects like {name:"John", age:30} inside resolve
+        //     }, 2000)
+        // })
+        // //consuming code
+        // data.then((item)=>{ 
+        //     console.log(item);  
+        // })
+        // console.log("hello");
+
+
+    // // suppose if we get error, then we'll use reject. 
+    // // eg: - here we created promise and then resolved/rejected it
+        //     let data = new Promise((resolve,reject)=>{
+        //         setTimeout(()=>{
+        //             reject("Some issues !!"); 
+        //         }, 2000)
+        //     })
+        //     data.then((item)=>{ 
+        //         console.log(item);  
+        //     }).catch((err)=>{           //using catch 
+        //         console.log("Catch Block : ", err);    
+        //     })
+        // // if our code would reject then it gives output like this
+        // // op: Catch Block :  Some issues !!
+
+
+    // // now here, we will done by calling API in which we don't need to create promise(Producing code, which is already defined in js), we only have to do the consuming code(second part of the promise)
+        // //in below example, it is shown that in eg1 we need to create promise and in eg2 we don't need to do it...
+        // // eg1:
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         resolve("code has been executed");  //it will executed inside promise > [[PromiseResult]]:. to executed or it in our code we will implement 'then'
+        //     })
+        // })
+        // console.log("just data : ",data);  //it will return the promise 
+        //
+        // //eg2:
+        // let data2 = fetch("https://dummy.restapiexample.com/api/v1/employees"); //fetch() - it is a function that is already provided by the Promise, to call API
+        // console.log("data2 : ",data2)
+        // // in above example, both eg1 and eg2 gives same output.. but in example to we just write the consuming code
+
+
+//2. Promise API:
+    // // now we will resolve data(get the APIs) rather than just printing promise
+    // // normal eg1.1, which returns the response.. not the actual API data
+    //     let data = fetch("https://dummy.restapiexample.com/api/v1/employees"); 
+    // 
+    //     data.then((item)=>{
+    //         console.log(item);      
+    //     })
+
+    // //by this, we will just get the response.. not the data..
+    // //NOTE: because whenever we resolve the API in promise.. it still has one more promise to resolve.. so it is compulsory to resolve 2 promises to get the data from API in promises 
+
+    // //now will fetch data from the API by resolving 2 promises as explained above: (also an example of promise chaining)
+    // //eg1.2:
+    //     let data = fetch("https://dummy.restapiexample.com/api/v1/employees"); 
+    //  
+    //     data.then((item)=>{
+    //         console.log("1st ", item);      // it will return only the response
+    //         return item.json();     //this will return in json format. and also it refers to the next 'then'
+    //     }).then((result)=>{         // we have created a chain of resolving 2nd promise
+    //         console.log("2nd ", result);    // it will return the actual api data
+    //     })
+
+
+// 3. Promise chaining:
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(() => {
+        //         resolve(10);
+        //     }, 2000);
+        // })
+        //
+        // data.then((item)=>{
+        //     console.log("1st ", item);  //10
+        //     return item*10;         //it refers to the next 'then' in the chain and applies there below in 'item2'
+        // }).then((item2)=>{
+        //     console.log("2nd ", item2); //100, 10*10(item*10;)
+        //     return item2*10         // similarly, it refers to the next 'then' in the chain and applies there below in 'item2'
+        // }).then((item3)=>{
+        //     console.log("3rd ", item3); //1000, 100*10(item2*10)
+        // }).catch((err)=>{
+        //     console.log("There is an error", err);
+        // })
+
+
+
+// 4. finally keyword - uses in both the cases whether it is resolved or reject
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(() => {
+        //         resolve(10);
+        //     }, 2000);
+        // })
+        //
+        // data.then((item)=>{
+        //     console.log("then block ", item);  //10         
+        // }).catch((err)=>{
+        //     console.log("Catch block statement", err);
+        // }).finally((item)=>{
+        //     console.log("Finally block statement", item);     //it runs compulsory, whether there's an error or not
+        // })
+
+
+
+//5. error handling
+    // //it will throw an error
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(() => {
+        //         throw new Error("Data issue !");       //it will throw an error
+        //     }, 2000);
+        // })
+
+        // data.then((item)=>{
+        //     console.log("then block ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement", err);
+        // })
+
+    // //it will throw an error in catch block
+        // let data = new Promise((resolve,reject)=>{
+        //     setTimeout(() => {
+        //         resolve("done");
+        //     }, 2000);
+        // })
+
+        // data.then((item)=>{
+        //     throw new Error("Data issue !");
+        //     console.log("then block ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement", err);
+        // })
+
+
+// 6. promise.all, promise.allSettled, promise.race - 
+    // //if 3 or 4 promises are working in parallel then we use these 3 methods
+    // //(i) promise.all - suppose if one promise takes 1 second to resolve, second takes 2 seconds and third takes 4 seconds then "this method executes and gives result only after all the promises gets resolved".
+    // // eg1:simple  
+        //    let data = Promise.all([
+        //         new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //                 resolve("2 seconds");
+        //             }, 2000);
+        //         }),
+        //         new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //                 resolve("1 second");
+        //             }, 1000);
+        //         }),
+        //         new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //                 resolve("4 seconds");
+        //             }, 4000);
+        //         })
+        //    ])
+        
+        // data.then((item)=>{
+        //     console.log("then block : ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement : ", err);
+        // })
+
+
+    //(problem in Promise.all) if any one of the promises is reject then it will directly goes to the catch block and won't show anything else... just that catch block error.
+        //     let data = Promise.all([
+        //         new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //                 resolve("2 seconds");
+        //             }, 2000);
+        //         }),
+        //         new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //                 reject("1 second");                //reject
+        //             }, 1000);
+        //         }),
+        //         new Promise((resolve,reject)=>{
+        //             setTimeout(() => {
+        //                 resolve("4 seconds");
+        //             }, 4000);
+        //         })
+        //    ])
+        //
+        //     data.then((item)=>{
+        //         console.log("then block : ", item);          
+        //     }).catch((err)=>{
+        //         console.log("Catch block statement : ", err);   //directly executes this
+        //     })
+
+
+    // //so, to overcome this problem we use Promise.allSettled
+    // //(ii) promise.allSettled -
+    // //normal example with all resolve(runs properly)
+        // let data = Promise.allSettled([
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("2 seconds");
+        //         }, 2000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("1 second");                
+        //         }, 1000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("4 seconds");
+        //         }, 4000);
+        //     })
+        // ])
+
+        // data.then((item)=>{
+        //     console.log("then block : ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement : ", err);
+        // })
+
+
+    // //example with one reject(runs properly and also showing the rejected ones as {status: rejected} in output)
+        // let data = Promise.allSettled([
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("2 seconds");
+        //         }, 2000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             reject("1 second");                //reject
+        //         }, 1000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("4 seconds");
+        //         }, 4000);
+        //     })
+        // ])
+        //
+        // data.then((item)=>{
+        //     console.log("then block : ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement : ", err);
+        // })
+
+
+    // //(iii) promise.race
+    // // if we want the result of the ones which are resolved first, then we use Promise.race
+    // //eg: in this example we will get the output of the promise who will resolved first(doesn't matter if it's in resolve or reject)
+    // // #1
+        // let data = Promise.race([
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("2 seconds");       //this will be executed, because it is resolving in 2 seconds(less than others)
+        //         }, 2000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             reject("5 seconds");               
+        //         }, 5000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("4 seconds");
+        //         }, 4000);
+        //     })
+        // ])
+
+        // data.then((item)=>{
+        //     console.log("then block : ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement : ", err);
+        // })
+
+
+    // // #2
+        // let data = Promise.race([
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("2 seconds");       
+        //         }, 2000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             reject("1 second"); //this will be executed, because it is resolving in 1 second(less than others)            
+        //         }, 1000);
+        //     }),
+        //     new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve("4 seconds");
+        //         }, 4000);
+        //     })
+        // ])
+        //
+        // data.then((item)=>{
+        //     console.log("then block : ", item);          
+        // }).catch((err)=>{
+        //     console.log("Catch block statement : ", err);
+        // })
+        
+
+    </script>
+</body>
+</html>
