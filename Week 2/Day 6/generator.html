@@ -1,0 +1,103 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+Generators
+1. generator functions
+2. Iterators
+
+
+**NOTE**
+> generator - it is a function. It is a type of function which can be pause or resume during the execution and when we resume the function then it will not start again, but it will indeed resume instead.
+>Iterators - We have the control in our hand of traversing.
+>.next() - whenever we use this function in array(in generator or iterator)..In output, it will print value.. but also 'done:false' the false will get printed until we finish traversing/printing that array, and it will be true when the array reaches to the end value(end of an array).
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Half code from Example 1.1:
+    <h1>Generate Dynamic ID</h1><br>
+    <h2>Your Dynamic ID is : <span id="myId"></span></h2>
+    <button onclick="getNewId()">Generate ID</button> -->
+
+
+    <script>
+        "use strict";
+
+
+
+//1. generator functions
+    // //normal function
+        // function simpleGenerator(){
+        //     console.log("Function called")
+        // }
+        // simpleGenerator();
+
+
+    // //generator function - we add asterisk(*) with the function or the function_name as 
+    // //{eg: function* function_name  or  function *function_name} and we have to give yield(a specific kind of output) and to call the generator function we need to create an instance and then need to add into console.log/alert(anything just to print) as given below:
+    // //eg:
+        // function* simpleGenerator(){
+        //         console.log("Function called");
+        //         let a = 100;
+        //         yield "First";
+        //         yield a;
+        //         yield 1221;
+
+        //         console.log("It runs when you call the last(and prints before the last)")
+        //     }
+        // // simpleGenerator();      //we cannot call generator function like this
+        // // to call the generator function we have to create an instance first then we have to print it as "instance_name.next()"
+        // let sG = simpleGenerator();
+        // console.log(sG.next());     //Function called, {value: 'First', done: false}
+        // console.log(sG.next());     //{value: 100, done: false}
+        // console.log(sG.next().value);     //1221, just a value 
+        // console.log(sG.next());     //{value: undefined, done: true}
+
+    // Example 1.1
+    //another Example(half code is in body)
+        // function* simpleGenerator(){
+        //     let i = 10;
+        //     while(true){
+        //         i++;
+        //         yield i;
+        //     }
+        // }
+        // let sG = simpleGenerator();
+
+        // function getNewId(){
+        //     // console.log(sG.next());          //if we do this too, then it will increase by 2
+        //     document.getElementById('myId').innerText = sG.next().value;
+        //     // console.log(document.getElementById('myId').innerText = sG.next().value); //same as above line, just prints values in console too..
+        // }
+
+// 2. Iterators
+    // //example of an array with for..of loop:
+    //     let fruits = ["Apple", "Orange", "Plum"];
+    //     for (let x of fruits){
+    //         console.log(x);
+    //     }
+
+    //example of Iterators
+        let numbers = [100, 200, 300];
+
+        console.log(typeof numbers[Symbol.iterator]);       //function
+
+        let iter = numbers[Symbol.iterator]();
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+        
+
+
+
+    </script>
+</body>
+</html>
