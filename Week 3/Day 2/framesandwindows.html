@@ -1,0 +1,54 @@
+<!--This file contains:
+***reference: https://javascript.info/
+1. frames and windows 
+    -window.open - window.open(url, name, params)
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <button onclick="openWindow()">Open window</button>
+    <button onclick="closeWindow()">Close window</button> -->
+
+    <script>
+        "use strict";
+
+    // //window.open(url, name, params)
+        // let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=0,height=0,left=-1000,top=-1000`;
+        // open('https://javascript.info/', 'test', params);
+
+
+    // //Example (half is in body)
+
+        // let myWindow;
+        // function openWindow(){
+        //     myWindow = window.open("https://javascript.info/", "","width=500px,height=250px,left=500px,top=300px");
+        // }
+        // function closeWindow(){
+        //     myWindow.close();
+        // }
+
+    // //Accessing window from popup
+        // let newWin = window.open("about:blank", "hello", "width=200, height=200");
+        // newWin.document.write("<script> window.opener.document.body.innerHTML = 'Test' <\/script>");
+
+    // // Closing a popup
+        // let newWindow = open('/', 'example', 'width=300,height=300');
+
+        // newWindow.onload = function(){
+        //     newWindow.close();
+        //     alert(newWindow.closed);
+        // }
+
+
+    </script>
+</body>
+</html>
