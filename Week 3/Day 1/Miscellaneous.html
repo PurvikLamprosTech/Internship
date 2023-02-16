@@ -1,0 +1,82 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. BigInt
+2. Eval
+3. Currying
+
+**NOTES: 
+i> BigInt
+    let bigint = 1n;
+    alert( +bigint ); // error
+    So we should use Number() to convert a bigint to a number.
+
+* comparison
+    alert( 2n > 1n ); // true
+    alert( 2n > 1 ); // true
+    alert( 1 == 1n ); // true
+    alert( 1 === 1n ); // false
+
+ii> Currying
+    -Currying is an advanced technique of working with functions.
+    -Currying is a transformation of functions that translates a function from callable as f(a, b, c) into callable as f(a)(b)(c)
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+//1. BigInt
+        // let bigint = 1n;
+        // let number = 2;
+
+        // // number to bigint
+        // alert(bigint + BigInt(number)); // 3
+
+        // // bigint to number
+        // alert(Number(bigint) + number); // 3
+        
+// 2. Eval : The built-in eval function allows to execute a string of code
+    //Example:
+        // let code = 'console.log("Hello")';
+        // console.log(code);      // prints the whole string as "console.log("Hello")"
+        // eval(code);             // it evaluates the string and print that code
+    //Example2:(calculator)
+        // let calc = prompt("Type an arithmetic expression","")
+        // console.log(eval(calc));
+
+    //Wrong Example:
+        // let calc2 = 'prompt("Type an arithmetic expression","")'
+        // console.log(eval(calc2));
+
+
+//3. Currying
+    // //Example of normal function:
+    //     let rectArea = function(l,b,h){
+    //         return l * b * h;
+    //     }
+    //     console.log(rectArea(1,2,3));       //6
+
+
+    // //Example of currying
+    //     let rectArea2 = function(l){
+    //         return function(b){
+    //             return function(h){
+    //                 return l * b * h;
+    //             }
+    //         }
+    //     }
+    //     console.log(rectArea2(1)(2)(3));    //6
+
+
+
+    </script>
+</body>
+</html>

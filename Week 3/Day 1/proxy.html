@@ -1,0 +1,133 @@
+<!--This file contains:
+***reference: https://javascript.info/***
+1. Proxy
+
+
+**NOTE**
+i>set
+    -The set trap should return true if setting is successful, and false otherwise (triggers TypeError).
+    -Don’t forget to return true:
+        For set, it must return true for a successful write.
+        If we forget to do it or return any falsy value, the operation triggers TypeError.
+
+ii>reflect
+    -Reflect.get reads an object property.
+    -Reflect.set writes an object property and returns true if successful, false otherwise.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+//1. Proxy 
+
+    // let target = {};
+    // let proxy = new Proxy(target, {});
+
+    // proxy.test = 5;
+    // console.log(target.test);   //5, the property appeared in target!
+    // console.log(proxy.test);    //5, it can be accessible from proxy too
+
+    // for(let k in proxy){
+    //     console.log(k);         //test
+    // }
+
+
+//get: >> get(target, property, receiver):
+
+    // let numbers = [1,2,3];
+
+    // numbers = new Proxy(numbers, {
+    //     get(target, prop){
+    //         if(prop in target){
+    //             return target[prop];
+    //         }else{
+    //             return 0;
+    //         }
+    //     }
+    // });
+
+    // console.log(numbers[1]);   //2, because it is an index where the '1' is located 
+    // console.log(numbers[10]);  //0, no such item 
+
+
+//set: >> set(target, property, value, receiver):
+
+    // let numbers = [];
+    // numbers = new Proxy(numbers, {
+    //     set(target, prop, val){
+    //         if(typeof val == 'number'){
+    //             target[prop] = val;
+    //             return true;
+    //         }else{
+    //             return false;
+    //         }
+    //     }
+    // });
+
+    // numbers.push(1);    //added 1 as a value
+    // numbers.push(5);    //added 5 as a value
+    // console.log(numbers[0]);    //1
+    // console.log(numbers[1]);    //5
+
+    // console.log("Length of array 'numbers' is : " +numbers.length); //Length of array 'numbers' is : 2
+
+    // numbers.push("test");   //tried to push string... it will give a TypeError
+
+
+//has: >>has(target, property)....
+//  (with in range example):
+
+    // let range = {
+    //     start: 1,
+    //     end: 10
+    // };
+    // range = new Proxy(range, {
+    //     has(target, prop){
+    //         return prop >= target.start && prop <= target.end;
+    //     }
+    // });
+
+    // console.log(3 in range);    //true
+    // console.log(30 in range);   //false
+
+
+//reflect
+
+    //simple example:
+        // let user = {};
+
+        // Reflect.set(user, 'name', 'John');
+        // console.log(user.name);     //John
+    
+    //Example2:
+        // let user = {
+        //     name: 'John'
+        // };    
+
+        // user = new Proxy(user, {
+        //     get(target, prop, receiver){
+        //         console.log(`GET ${prop}`);
+        //         return Reflect.get(target, prop, receiver);
+        //     },
+        //     set(target, prop, val, receiver){
+        //         console.log(`SET ${prop} = ${val}`);
+        //         return Reflect.set(target,prop,val,receiver);
+        //     }
+        // });
+
+        // console.log(user);      // Proxy {name: 'John'}
+        // let name = user.name;   // shows "GET name"
+        // user.name = "Joy";      // shows "SET name = Joy"
+
+
+    </script>
+</body>
+</html>

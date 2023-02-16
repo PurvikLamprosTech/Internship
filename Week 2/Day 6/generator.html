@@ -85,16 +85,85 @@ Generators
     //     }
 
     //example of Iterators
+        // let numbers = [100, 200, 300];
+        // // console.log(typeof numbers[Symbol.iterator]);       //function //keep it as comment
+        //
+        // let iter = numbers[Symbol.iterator]();
+        // console.log(iter.next());       //{value: 100, done: false}
+        // console.log(iter.next());       //{value: 200, done: false}
+        // console.log(iter.next());       //{value: 300, done: false}
+        // console.log(iter.next());       //{value: undefined, done: true}
+
+
+    // // suppose if we want to print any value randomly then we can do like this:
+        // let numbers = [100, 200, 300];
+        
+        // let iter = numbers[Symbol.iterator]();
+        // iter.next();                    // prints nothing
+        // console.log("Hello");           //Hello
+        // console.log(iter.next());       //{value: 200, done: false}
+        // console.log("World");           //World
+        // console.log(iter.next().value); //300
+        // console.log(iter.next().done);  //true, from the 4th value
+        // console.log(iter.next());       //{value: undefined, done: true}
+
+
+    // //if we have large amount of data then we can use loop, for example:
+        // let numbers = [100, 200, 300, 400, 500, 600, 700, 800];
+        
+        // let iter = numbers[Symbol.iterator]();
+        // let result = iter;                    
+
+        // for (result in numbers){
+        //     console.log(iter.next().value)  //100, 200, 300, likewise
+        //     // console.log(iter.next());   //this will print in this format - {value: 100, done: false}
+        //     // result = iter.next();    //if we use this then it will increment twice, like, 100 - 300 - 500...
+        // }
+
+
+    // //using string:
+        // let strings = ['String1','String2','String3','String4'];
+        // let iter1 = strings[Symbol.iterator]();
+        
+        // let result = iter1;
+        // for(result in strings){
+        //     console.log(iter1.next().value);
+        //     // console.log(iter1.next());
+        //     // result = iter1;      // keep it as comment
+        // }
+        //     // console.log(result); // keep it as comment
+        
+
+    //we can create our own iterator, like given below:
+        function numberIterator(arr){
+            let nextNum = 0;            //for pointing the index of an array
+            return {
+                next(){
+                    if(nextNum < arr.length){
+                        return{
+                            value: arr[nextNum ++],
+                            done: false
+                        }
+                    }else{
+                        return{
+                            value: arr[nextNum ++],
+                            done: true
+                        }
+                    }
+                }
+            }
+        }
+
         let numbers = [100, 200, 300];
 
-        console.log(typeof numbers[Symbol.iterator]);       //function
+        let num = numberIterator(numbers);
 
-        let iter = numbers[Symbol.iterator]();
-        console.log(iter.next());
-        console.log(iter.next());
-        console.log(iter.next());
-        console.log(iter.next());
+        console.log(num.next());    //{value: 100, done: false}
+        num.next();                 // to skip the value
+        console.log(num.next());    //{value: 300, done: false}
+        console.log(num.next());    //{value: undefined, done: true}
         
+    
 
 
 
