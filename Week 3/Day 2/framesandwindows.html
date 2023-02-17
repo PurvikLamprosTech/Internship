@@ -2,7 +2,13 @@
 ***reference: https://javascript.info/
 1. frames and windows 
     -window.open - window.open(url, name, params)
+    -Accessing window from popup
+    -Closing a popup
+2. iframe - sandbox example
 
+3. Blob
+
+4. Reading a file
 
 -->
 <!DOCTYPE html>
@@ -17,6 +23,20 @@
 
     <!-- <button onclick="openWindow()">Open window</button>
     <button onclick="closeWindow()">Close window</button> -->
+       
+    <!--2. iframe - sandbox: external sandbox.html file is also there-->
+    <!-- <iframe sandbox src="sandboxed.html" style="height:60px;width:90%"></iframe> -->
+
+
+    <!--3. blob half code of (Example1 of blob as URL) -->
+        <!-- <a download="hello.txt" href="#" id="link">Download</a> -->
+    
+    <!--3. blob half code of (Example2 of image to blob) -->
+        <!-- <input type="file" onchange="readFile1(this)"> -->
+
+        
+    <!-- 4. reading file (half) -->
+    <!-- <input type="file" onchange="readFile(this)"> -->
 
     <script>
         "use strict";
@@ -47,6 +67,89 @@
         //     newWindow.close();
         //     alert(newWindow.closed);
         // }
+
+
+
+//3. Blob
+
+    // //Example 
+
+        // const textContent = 'Hello, World!';
+        // const blob = new Blob([textContent], { type: 'text/plain'});
+        // // read the contents of the blob
+        // const reader = new FileReader();
+        // reader.onload = function() {
+        //     console.log(reader.result);
+        // };
+        // reader.readAsText(blob);
+
+
+    // //blob as URL: (half code is in body)
+            // //Example1:
+            // let blob1 = new Blob(['Hello World!'], { type: 'text/plain'});
+            // link.href = URL.createObjectURL(blob1);
+
+
+            // //Example2: We can also create a link dynamically in JavaScript and simulate a click by link.click(), then download starts automatically.
+            // let link = document.createElement('a');
+            // link.download = 'hello.txt';
+
+            // let val = 'Hello World!'
+            // let blob2 = new Blob([val], { type: 'text/plain'});
+
+            // link.href = URL.createObjectURL(blob2);
+            // link.click();
+            // URL.revokeObjectURL(link.href);
+
+
+    // //image to Blob:
+        // function readFile1(input){
+        //     let fileinput = document.querySelector('input[type="file"]');
+        //     let imgFile = fileinput.files[0];
+
+        //     let reader = new FileReader();
+
+        //     reader.addEventListener('load', function(event) {
+        //          let imgData = event.target.result;
+        //          let imgBlob = new Blob([imgData], { type: imgFile.type });
+        //     });
+        //     reader.readAsDataURL(imgFile);  
+        // }
+        
+
+
+    // //Blob to base64:
+        
+        // let link = document.createElement('a');
+        // link.download = 'hello.txt';
+
+        // let blob = new Blob(['Hello, World!'],{type: 'text/plain'});
+
+        // let reader = new FileReader();
+        // reader.readAsDataURL(blob);
+
+        // reader.onload = function(){
+        //     link.href = reader.result;
+        //     link.click();
+        // };
+
+
+
+//4 . Reading a file
+        // function readFile(input){
+        //     let file = input.files[0];
+
+        //     let reader = new FileReader();
+        //     reader.readAsText(file);
+
+        //     reader.onload = function(){
+        //         console.log(reader.result);
+        //     };
+        //     reader.onerror = function(){
+        //         console.log(reader.error);
+        //     };
+        // }
+    
 
 
     </script>
