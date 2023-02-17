@@ -1,0 +1,44 @@
+<!--This file contains:
+***reference: https://javascript.info/
+
+Storing data in the browser
+1. Cookie
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+// //1. Cookie
+        
+        document.cookie = "user1 = John; expires=Sat, 18 Feb 2023 12:00:00 UTC";     //set cookie expire parameter
+        document.cookie = "user2 = Stephen";
+        document.cookie = "user3 = Joy";
+        
+        let x = document.cookie;
+        console.log(x)
+
+        let key = prompt("Enter your key for cookie","");
+        let value = prompt("Enter your value for cookie","");
+
+        document.cookie = `${encodeURIComponent(key)} = ${encodeURIComponent(value)}`;
+        // console.log(x)                    // keep this as comment
+        // document.cookie = `${decodeURIComponent(key)} = ${decodeURIComponent(value)}`;    // keep this as comment
+        // console.log(document.cookie)      // keep this as comment
+
+        // to delete a cookie , we just have to modify the same Key=value pair and set the past date in it, for eg:
+        document.cookie = "user3 = Joy; expires=Sat, 1 Feb 2023 12:00:00 UTC";      //it will delete the cookie
+
+
+
+    </script>
+</body>
+</html>

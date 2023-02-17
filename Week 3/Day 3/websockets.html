@@ -1,0 +1,51 @@
+<!--This file contains:
+***reference: https://javascript.info/
+
+Websocket
+
+***Extra 
+link for reference : https://javascript.info/article/websocket/demo/server.js
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        let socket = new WebSocket("wss://javascript.info/article/websocket/demo/hello");
+
+        socket.onopen = function(event){
+            console.log("[open] Connection established");
+            console.log("Sending to server");
+            socket.send("My name is John");
+        };
+
+        socket.onmessage = function(event){
+            console.log(`[message] Data received from server: ${event.data}`);
+        };
+
+        socket.onclose = function(event){
+            if(event.wasClean){
+                console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+            } else {
+                // e.g. server process killed or network down
+                // event.code is usually 1006 in this case
+                console.log('[close] Connection died');
+            }
+        };
+
+        socket.error = function(error){
+            console.log('[error]');
+        };
+
+
+    </script>
+</body>
+</html>

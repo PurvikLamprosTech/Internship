@@ -1,0 +1,28 @@
+<!--This file contains:
+***reference: https://javascript.info/
+
+Animation
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .train {
+            position:absolute;
+            cursor: pointer;
+            width: 177px;
+            height: 160px;
+            left: 75px;
+            transition: left 5s cubic-bezier(.5, -1, .5, 2);
+        }
+    </style>
+</head>
+<body>
+    <img class="train" src="https://js.cx/clipart/train.gif" onclick="this.style.left='400px'">
+</body>
+</html>
