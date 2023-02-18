@@ -1,0 +1,167 @@
+<!--This file contains:
+***reference: https://javascript.info/
+
+Regular Expressions and Functions
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+// // using g
+      // let reg = /purvik/g;
+
+      // console.log(reg);
+      // console.log(reg.source);
+
+      // let s = "Hello, my name is purvik panchal";
+
+      // let result = reg.exec(s);
+      // console.log(result);
+      // result = reg.exec(s);
+      // console.log(result);
+      // result = reg.exec(s);
+      // console.log(result);
+
+// //without g
+      // let reg = /purvik/;
+
+      // console.log(reg);
+      // console.log(reg.source);
+
+      // let s = "Hello, my name is purvik panchal";
+
+      // let result = reg.exec(s);
+      // console.log(result);
+      // result = reg.exec(s);
+      // console.log(result);
+      // result = reg.exec(s);
+      // console.log(result);
+
+// //using i
+      // let reg = /purvik/i;
+
+      // console.log(reg);
+      // console.log(reg.source);
+
+      // let s = "Hello, my name is PURvik panchal";
+
+      // let result = reg.exec(s);
+      // console.log(result);
+      // console.log(result.input);
+      // console.log(result.index);
+
+// // test() - returns true or false
+
+      // let reg = /purvik/;
+
+      // console.log(reg);
+      // console.log(reg.source);
+
+      // let s = "Hello, my name is purvik panchal and panchal PurVik";
+
+      // let result = reg.exec(s);
+      // console.log(result);
+      // console.log(result.input);
+      // console.log(result.index);
+
+      // let result2 = reg.test(s);
+      // console.log(result2);       //true
+
+// //to avoid the error of result, we are using the if condition
+        //   let reg = /purvik/;
+
+        //   console.log(reg);
+        //   console.log(reg.source);
+
+        //   let s = "Hello, my name is purVik panchal and panchal PurVik";
+
+        //   let result = reg.exec(s);
+
+        //   if (result) {
+        //     console.log(result);
+        //     console.log(result.input);
+        //     console.log(result.index);
+        //   }
+
+        //   let result2 = reg.test(s);
+        //   console.log(result2);             //false
+
+
+// // match() - it will return an array of results or null
+
+        // let reg = /purvik/;
+        // //let reg = /purvik/gi;
+        // // let reg = /purvik/i;
+
+        // console.log(reg);
+        // console.log(reg.source);
+
+        // let s = "Hello, my name is purvik panchal and panchal PurVik";
+
+        // let result = reg.exec(s);
+
+        // if (result) {
+        // console.log(result);
+        // console.log(result.input);
+        // console.log(result.index);
+        // }
+
+        // let result2 = reg.test(s);
+        // console.log(result2); 
+
+        // // let result3 = reg.match(s);         // -----> this is wrong 
+        // let result3 = s.match(reg);             // -----> this is right
+        // console.log(result3);
+
+
+// search() - returns index of first match else -1
+
+        // let reg = /purvik/;
+        // //let reg = /purvik/gi;
+        // // let reg = /purvik/i;
+
+        // // console.log(reg);
+        // // console.log(reg.source);
+
+        // let s = "Hello, my name is purvik panchal and panchal PurVik";
+
+        // // let result = reg.exec(s);
+
+        // // if (result) {
+        // // console.log(result);
+        // // console.log(result.input);
+        // // console.log(result.index);
+        // // }
+
+        // // let result2 = reg.test(s);
+        // // console.log(result2); 
+
+        // // let result4 = reg.search(s);         // -----> this is wrong 
+        // let result4 = s.search(reg);             // -----> this is right
+        // console.log(result4);
+
+
+// // replace() - returns new replaced string with all the replacements (if no global flag is given, then only first match will be replaced)
+
+        // let reg = /purvik/;
+        // // let reg = /purvik/g;
+        // // let reg = /purvik/i;
+        // //let reg = /purvik/gi;
+
+        // let s = "Hello, my name is purvik and purvik";
+
+        // let result5 = s.replace(reg, 'John');             // -----> this is right
+        // console.log(result5);
+
+    </script>
+  </body>
+</html>

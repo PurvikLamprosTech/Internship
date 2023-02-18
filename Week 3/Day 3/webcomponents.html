@@ -2,20 +2,61 @@
 ***reference: https://javascript.info/
 
 Web Components
+1. Shadow DOM
 
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+    
+    <style>
+        .error{
+            color: red;
+        }
+        cust-tag2{
+            color: rgb(68, 0, 255);
+        }
+    </style>
+  </head>
+  <body>
+
+    <!-- class name is error in p tag and applied some CSS -->
+    <p class="error">There is some error. (class name is error in p tag)</p>    
+
+    <!-- 1 -->
+    <cust-tag></cust-tag>
+
+    <!-- 2 -->
+    <cust-tag2 data="This is a shadow DOM text. " ></cust-tag2>
+
+
     <script>
-        "use strict";
-        
+      "use strict";
+
+// // 1. Shadow DOM
+      customElements.define("cust-tag",
+        class extends HTMLElement {
+          connectedCallback() {
+            const temp = this.attachShadow({ mode: "open" });
+            temp.innerHTML = `<p>Hello user</p>`;
+          }
+        }
+      );
+
+
+// //2.
+    customElements.define("cust-tag2",
+        class extends HTMLElement {
+            connectedCallback() {
+                const temp = this.attachShadow({ mode: "open" });
+                temp.innerHTML = `<p class="error">Hello, ${this.getAttribute('data')} (class name is error in p tag, too)</p>`; //same class name as above in p tag
+            }
+        }
+    );
     </script>
-</body>
+  </body>
 </html>
