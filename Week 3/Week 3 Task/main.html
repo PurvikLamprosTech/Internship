@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Data</h1>
+    </header>
+    <section>
+        <form id="f1" class="f1">
+            <h1>Find User</h1>
+            <!-- <label for="user-type">Select User Type:</label> -->
+            <select id="user-type" name="user-type" placeholder="Select Field">
+                <option value="admin">--Select Field--</option>
+                <option value="admin">First Name</option>
+                <option value="employee">Last Name</option>
+                <option value="customer">Email</option>
+                <option value="admin">Age</option>
+                <option value="employee">Username</option>
+            </select>
+            <!-- <label for="user-id">Enter User ID:</label> -->
+            <input type="text" id="user-id" name="user-id" placeholder="Enter the text to find">
+            <button type="submit">Find</button>
+        </form>
+    </section>
+    
+    <section>
+        <div class="table1">
+            <table id="t1" class="mainT">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Image</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="t-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+            <!-- <div id="updatePop" class="container mt-5"> -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Contact Us</button> -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Data</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formData" action="./main.html">
+                                    <div class="mb-3">
+                                        <input id="id" type="text" name="id" hidden>
+                                    </div>                                    
+                                    <div class="mb-3">
+                                        <label for="fname" class="form-label required">First Name</label>
+                                        <input type="text" id="fname" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lname" class="form-label required">Last Name</label>
+                                        <input type="text" id="lname" class="form-control">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+                                <!-- <button type="submit" class="btn btn-danger">Cancel</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+    </section>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
+
+
+</body>
+</html>
+
