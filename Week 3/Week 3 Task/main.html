@@ -28,7 +28,7 @@
             </select>
             <!-- <label for="user-id">Enter User ID:</label> -->
             <input type="text" id="user-id" name="user-id" placeholder="Enter the text to find">
-            <button type="submit">Find</button>
+            <button type="submit" id="search-button">Find</button>
         </form>
     </section>
     
@@ -36,7 +36,7 @@
         <div class="table1">
             <table id="t1" class="mainT">
                 <thead>
-                    <tr>
+                    <tr class="tr">
                         <th>ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -49,7 +49,7 @@
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <tbody id="t-body"></tbody>
+                <tbody id="t-body" class="t-body"></tbody>
             </table>
         </div>
     </section>
@@ -101,9 +101,5 @@
     <script src="./script.js"></script>
 </body>
 
-</html>
-
-
-</body>
 </html>
 

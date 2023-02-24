@@ -62,7 +62,9 @@ function onUpdate(updBtn) {
   let sb = document.getElementById("submitBtn");
   sb.onclick = () => {
     const fm = document.getElementById("formData");
-    // let uid = fm.elements[0].value;
+    let uid = fm.elements[0].value;
+
+
     // alert(uid)
 
     let updatedFirstName = document.getElementById('fname').value;
@@ -79,11 +81,20 @@ function onUpdate(updBtn) {
       })
     })
       .then(res => res.json())
-      .then(console.log);
+      // .then(console.log);
+
+      console.log(document.getElementById(`fn[${uid}]`));
+      document.getElementById(`fn[${uid-1}]`).innerText = updatedFirstName;
+      document.getElementById(`ln[${uid-1}]`).innerText = updatedLastName;
+      // .then(console.log);  
+      var x = document.getElementById("myModal");
+      if (x.style.display != "none") {
+          x.style.display = "none";
+
+      }
 
 
 
-    // console.log(document.getElementById(`fn[${uid}]`));
   }
 }
 function onDelete(dltBtn) {
@@ -94,6 +105,67 @@ function onDelete(dltBtn) {
 
 data2();
 
+
+
+let fb = document.getElementById("search-button");
+fb.onclick = function(){
+
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("user-id");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("t1");
+    tr = table.getElementsByTagName("tr");
+    var cn = document.getElementById("user-type").value;
+    var ci = document.getElementById("user-type").selectedIndex;
+    for (var i = 0; i < tr.length; i++) {
+    var tds = tr[i].getElementsByTagName("td");
+    var flag = false;
+    for(var j = 0; j < tds.length; j++){
+      var td = tds[ci];
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        flag = true;
+      } 
+    }
+    if(flag){
+        tr[i].style.display = "";
+    }
+    else {
+        tr[i].style.display = "none";
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// search = () => {
+//   document.getElementById("search-button").addEventListener('click', () => {
+//     let needle = document.getElementById('user-id').value.toLowerCase();
+//     let rows = document.querySelectorAll("#table1 mainT tbody0 t-body tr td");
+//     for (let i = 0; i < rows.length; i++) {
+//       let haystack = rows[i].textContent.toLowerCase();
+//       if(haystack.indexOf(needle) === -1)
+//         rows[i].style.display = 'none';
+//       else
+//         rows[i].style.display = '';
+//     }
+//   });  
+// }
+// search();
 
 
 

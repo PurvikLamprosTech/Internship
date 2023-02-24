@@ -92,6 +92,10 @@ button:hover {
   background-color: #473e8e;
 }
 
+.modal-backdrop.show {
+  opacity: 0 !important;
+}
+
 /* .required:after {
   content: "*";
   color: red;
