@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TO-DO List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+      }
+      h1 {
+        margin: 0;
+      }
+      .add-task-form {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: #eee;
+      }
+      .add-task-form input[type="text"] {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 60%;
+        margin-right: 0.5rem;
+      }
+      .add-task-form button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .task-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .task-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid #ccc;
+      }
+      .task-list li:last-child {
+        border-bottom: none;
+      }
+      .task-list li .task-title {
+        font-weight: bold;
+      }
+      .task-list li .task-actions button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .task-list li .task-actions button.edit {
+        margin-right: 0.5rem;
+      }
+      .task-list li .task-actions button.delete {
+        background-color: #f00;
+      }
+      .task-list li.completed {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>TO-DO List</h1>
+      <button
+        id="logoutBtn"
+        style="
+          background-color: rgb(15, 170, 144);
+          color: rgb(255, 255, 255);
+          border: none;
+          padding: 15px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          height: fit-content;"
+        onmouseover="this.style.backgroundColor='rgb(13, 137, 116)'"
+        onmouseout="this.style.backgroundColor='rgb(15, 170, 144)'"
+      >
+        Logout
+      </button>
+    </header>
+    <div class="add-task-form">
+      <form method="POST" action="/tasks">
+        <input type="text" name="title" placeholder="Enter task title" />
+        <button type="submit">Add Task</button>
+      </form>
+    </div>
+    <ul class="task-list">
+      <% tasks.forEach(task => { %>
+      <li class="<%= task.completed ? 'completed' : '' %>">
+        <span class="task-title"><%= task.title %></span>
+        <span class="task-actions">
+          <form method="POST" action="/tasks/<%= task._id %>/complete">
+            <button type="submit">Mark as completed</button>
+          </form>
+          <form method="GET" action="/tasks/<%= task._id %>">
+            <button type="submit" class="edit">Edit</button>
+          </form>
+          <form method="POST" action="/tasks/<%= task._id %>?_method=DELETE">
+            <button type="submit" class="delete">Delete</button>
+          </form>
+        </span>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+  <script>
+    var logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", function () {
+      window.location.href = "/mainLoginPage";
+    });
+  </script>
+</html>

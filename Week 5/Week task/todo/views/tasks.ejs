@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= task.title %> - To-Do App</title>
+    <!-- <link rel="stylesheet" href="/styles.css"> -->
+    <style>
+        /* styles.css */
+
+/* Set background color and font for the page */
+body {
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the main content */
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the h2 heading */
+h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+/* Style the form labels */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Style the form inputs */
+input[type="text"],
+input[type="checkbox"] {
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>To-Do App</h1>
+        <!-- <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tasks/<%= task._id %>/edit">Edit Task</a></li>
+                <li><a href="/tasks/<%= task._id %>/complete">Mark as Completed</a></li>
+                <li><a href="/tasks/<%= task._id %>/delete">Delete Task</a></li>
+            </ul>
+        </nav> -->
+    </header>
+    <main>
+        <h2><%= task.title %></h2>
+        <p>
+            Created on <%= task.date.toLocaleDateString() %> at <%= task.date.toLocaleTimeString() %>
+            <% if (task.completed instanceof Date) { %>
+                (completed on <%= task.completed.toLocaleDateString() %> at <%= task.completed.toLocaleTimeString() %>)
+            <% } %>       
+        </p>
+        <form action="/">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<%= task.title %>">
+            <label for="completed">Completed:</label>
+            <input type="checkbox" name="completed" id="completed" <% if (task.completed) { %>checked<% } %>>
+            <button type="submit">Save</button>
+        </form>
+    </main>
+</body>
+</html>
